@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="Tmp.Views.LoginPagina"
+             xmlns:local="clr-namespace:Tmp.ViewModels;assembly=Tmp" 
+             BackgroundColor="#FEFAC0"
+             NavigationPage.HasNavigationBar="False"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+    <ContentPage.BindingContext>
+        <local:LoginViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#FEFAC0">
+                <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="#FEFAC0" Padding="8" Spacing="10" Margin="0,0,0,0">
+                    <Image Source="xamarin_logo.png" Margin="0,10,0,20" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+                    </Image>
+                    <Grid Margin="50,0,50,0" RowSpacing="0" ColumnSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Entry TextColor="Black" x:Name="EntryUserName" PlaceholderColor="Gray" Placeholder="Username"  Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Keyboard="Email" 
+                        Text="{Binding Email}"  >
+                            <Entry.HeightRequest>
+                                <OnPlatform x:TypeArguments="x:Double" iOS="40" Android="50"  />
+                            </Entry.HeightRequest>
+                        </Entry>
+                    </Grid>
+                    <Grid Margin="50,0,50,0" RowSpacing="0" ColumnSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Entry x:Name="EntryPassword" TextColor="Black" PlaceholderColor="Gray" Placeholder="Password" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Keyboard="Text"
+                        IsPassword="True"   Text="{Binding Password}"  >
+                            <Entry.HeightRequest>
+                                <OnPlatform x:TypeArguments="x:Double" iOS="40" Android="50"  />
+                            </Entry.HeightRequest>
+                        </Entry>
+
+                    </Grid>
+
+                    <Label  Text="ForgotPassword"  HorizontalOptions="CenterAndExpand"  VerticalOptions="Center" 
+                     TextColor="{StaticResource AzulClaro}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding RecoverPasswordCommand}"  />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+
+                    <Button Margin="80,10,80,0" 
+                            Command="{Binding LoginCommand}" 
+                            Text="INICIAR SESION" HorizontalOptions="FillAndExpand"  
+                            VerticalOptions="Center" BackgroundColor="{StaticResource AzulOscuro}" 
+                            FontSize="16" BorderWidth="2"
+                            BorderRadius="10" BorderColor="{StaticResource AzulOscuro}" TextColor="White">
+                    </Button>
+                    <Grid Margin="50,10,50,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*" />
+                            <ColumnDefinition Width="5*" />
+                        </Grid.ColumnDefinitions>
+
+                    </Grid>
+                    <Label Margin="50,10,50,0" FontSize="15" Text="Dont Have Account" HorizontalOptions="Center" VerticalOptions="Center"  TextColor="{StaticResource FontColor}">
+                    </Label>
+                    <Button Margin="80,20,80,0" Command="{Binding RegisterNewUserCommand}" 
+                    IsEnabled="{Binding IsEnabled}" 
+                    FontAttributes="Bold" 
+                    Text="Register New User" 
+                    HorizontalOptions="FillAndExpand" VerticalOptions="Center" 
+                    BackgroundColor="{StaticResource AzulClaro}" TextColor="{StaticResource AzulOscuro}"
+                    FontSize="16" BorderColor="{StaticResource AzulClaro}" BorderWidth="2" BorderRadius="10">
+                    </Button>
+
+
+                </StackLayout>
+
+                <ContentView x:Name="bgLayer" BackgroundColor="Transparent"  IsVisible="{Binding IsRunning}" Opacity="0.2" />
+                <Frame x:Name="frameLayer" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="CenterAndExpand" IsVisible="{Binding IsRunning}" VerticalOptions="CenterAndExpand">
+                    <StackLayout>
+                        <ActivityIndicator x:Name="indicatorLoader" BackgroundColor="Transparent" Opacity="0.9" IsRunning="{Binding IsRunning}" IsVisible="{Binding IsRunning}" VerticalOptions="CenterAndExpand"  >
+                            <ActivityIndicator.Color>
+                                <OnPlatform x:TypeArguments="Color" iOS="#FF7057" Android="#FF7057" />
+                            </ActivityIndicator.Color>
+                        </ActivityIndicator>
+                        <Label HorizontalTextAlignment="Center" BackgroundColor="Transparent"  Text="Loading..." TextColor="#000000" XAlign="Center" />
+                    </StackLayout>
+                </Frame>
+            </Grid>
+            <Label Margin="0,20,0,10" FontSize="10" Text="THE MARKETING PLANNER" HorizontalOptions="Center" VerticalOptions="End"  TextColor="Gray">
+            </Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

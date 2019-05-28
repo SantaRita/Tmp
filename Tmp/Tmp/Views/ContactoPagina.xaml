@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tmp.Views.ContactoPagina"
+            BindingContext="{Binding Main, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="20,0,20,0">
+            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <Image Source="xamarin_logo" Aspect="AspectFit" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                </Image>                
+                <Label Margin="0,20,0,20" 
+                       Text="fñfjsfkñ jfkñf fsdjk jsdfksdñ jfdkaslñ jfkdlñsa jfkdlñsa jfdkslña fjdskalñf jdsklñ . fsdkfjlsdñ jsdkaslñ fdas.f jdkaslñf jdksal f,d.sa fjkdlsa ñfjdkal fsd. fjkdasl "
+                       HorizontalTextAlignment="Center"/>
+
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>                    
+                    <Label Grid.Row="0" Grid.Column="1" Text="Linkedin"  HorizontalOptions="Start" VerticalOptions="CenterAndExpand" FontSize="18" TextColor="Gray" XAlign="Start" />
+                    <Label Grid.Row="1" Grid.Column="1" Text="Skype"  HorizontalOptions="Start" VerticalOptions="CenterAndExpand" FontSize="18" TextColor="Gray" XAlign="Start" />
+                    <Label Grid.Row="2" Grid.Column="1" Text="Facebook"  HorizontalOptions="Start" VerticalOptions="CenterAndExpand" FontSize="18" TextColor="Gray" XAlign="Start" />
+
+                </Grid>
+
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

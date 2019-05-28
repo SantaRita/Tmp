@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"              
+             x:Class="Tmp.Views.RegisterPagina"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+  <ContentPage.Content>
+        <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" BackgroundColor="White">
+
+
+
+            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10,120,10,0">
+                <ScrollView BindingContext="{Binding Register}">
+                    <StackLayout BackgroundColor="White">
+                        <Grid Padding="0" BackgroundColor="White">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Row="1" Grid.Column="0" Margin="5,5,5,5" HorizontalOptions="FillAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Entry TextColor="Black" x:Name="EntryUser" PlaceholderColor="Gray"  Keyboard="Text" 
+                                    Placeholder="Nombre usuario/Razón Social" Grid.Column="1" HorizontalOptions="FillAndExpand" 
+                                    Text="{Binding User, Mode=TwoWay}"  >
+                                    <Entry.HeightRequest>
+                                        <OnPlatform x:TypeArguments="x:Double" iOS="40" Android="50"  />
+                                    </Entry.HeightRequest>
+                                </Entry>
+                            </Grid>
+                            <Grid Grid.Row="2" Margin="5,5,5,5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Entry TextColor="Black" x:Name="EntryPassword" PlaceholderColor="Gray" Placeholder="Password" IsPassword="True"  
+                                       Grid.Column="1" HorizontalOptions="FillAndExpand" Keyboard="Text" 
+                                     Text="{Binding Password, Mode=TwoWay}"  >
+                                    <Entry.HeightRequest>
+                                        <OnPlatform x:TypeArguments="x:Double" iOS="40" Android="50"  />
+                                    </Entry.HeightRequest>
+                                </Entry>
+                            </Grid>
+                            <Grid Grid.Row="3" Margin="5,5,5,5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Entry TextColor="Black" x:Name="ConfirmPassword" PlaceholderColor="Gray" 
+                                       Placeholder="ConfirmPassword" IsPassword="True" 
+                                       Grid.Column="1" HorizontalOptions="FillAndExpand" Keyboard="Text" 
+                                    Text="{Binding Confirm, Mode=TwoWay}"  >
+                                    <Entry.HeightRequest>
+                                        <OnPlatform x:TypeArguments="x:Double" iOS="40" Android="50"  />
+                                    </Entry.HeightRequest>
+                                </Entry>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="4" Margin="5,5,5,5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Entry TextColor="Black" x:Name="Mail" PlaceholderColor="Gray"  Keyboard="Email" 
+                                       Placeholder="Correo electrónico" IsPassword="True" 
+                                       Grid.Column="1" HorizontalOptions="FillAndExpand" 
+                                    Text="{Binding Confirm, Mode=TwoWay}"  >
+                                <Entry.HeightRequest>
+                                    <OnPlatform x:TypeArguments="x:Double" iOS="40" Android="50"  />
+                                </Entry.HeightRequest>
+                            </Entry>
+                        </Grid>
+
+                        <Grid Grid.Row="5" Margin="5,5,5,5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Picker SelectedIndex="{Binding TipoEmpresa}" Title="Tipo de Empresa" HorizontalOptions="FillAndExpand">
+                                <Picker.Items>
+                                    <x:String>Tipo empresa 1</x:String>
+                                    <x:String>Tipo empresa 2</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </Grid>
+                        
+                        
+                        <ActivityIndicator IsRunning="{Binding IsRunning, Mode=TwoWay}" IsVisible="{Binding IsRunning, Mode=TwoWay}" VerticalOptions="CenterAndExpand">
+                            <ActivityIndicator.Color>
+                                <OnPlatform x:TypeArguments="Color" iOS="#FF7057" Android="#FF7057" />
+                            </ActivityIndicator.Color>
+                        </ActivityIndicator>
+
+                        <Button x:Name="btSubmit" Command="{Binding SaveCommand}" VerticalOptions="EndAndExpand"  FontAttributes="Bold" Text="Submit" 
+                                HorizontalOptions="FillAndExpand" BackgroundColor="Silver" IsEnabled="{Binding IsEnabled, Mode=TwoWay}" TextColor="Gray"
+                            FontSize="16" BorderColor="Silver" BorderWidth="2" BorderRadius="20" Margin="5,20,5,20">
+                        </Button>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

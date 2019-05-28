@@ -15,14 +15,22 @@ namespace Tmp
 
         public App()
         {
+
+            NavigationService navigationService = new NavigationService();
+            
             InitializeComponent();
 
-            if (UseMockDataStore)
+            /*if (UseMockDataStore)
                 DependencyService.Register<MockDataStore>();
             else
-                DependencyService.Register<AzureDataStore>();
+                DependencyService.Register<AzureDataStore>();*/
 
-            MainPage = new MainPage();
+            
+            
+            navigationService.SetMainPage("CargaPagina");
+
+
+
         }
 
         protected override void OnStart()
