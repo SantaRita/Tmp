@@ -6,6 +6,8 @@
     using GalaSoft.MvvmLight.Command;
     using Newtonsoft.Json;
     using Services;
+    using Tmp.Helpers;
+    using Tmp.Models;
     using Xamarin.Forms;
 
     public class PasswordConfirmViewModel : INotifyPropertyChanged
@@ -17,7 +19,7 @@
         #endregion
 
         #region Services
-        //ApiService apiService;
+        ApiService apiService;
         DialogService dialogService;
         NavigationService navigationService;
         #endregion
@@ -64,16 +66,7 @@
             }
         }
 
-        //private string title = Resx.AppResources.Literal("CreateNewPassword");         /*public string Title
-        {
-            set
-            {                 title = value;                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Title)));
-            }
-            get
-            {
-                return title;
-            }
-        }*/
+
 
         public string EntryMailPassword
         {
@@ -108,7 +101,7 @@
         public PasswordConfirmViewModel()
         {
 
-            //apiService = new ApiService();
+            apiService = new ApiService();
             dialogService = new DialogService();
             navigationService = new NavigationService();
 
@@ -127,65 +120,49 @@
 
         async void Save()
         {
-            /*if (string.IsNullOrEmpty(EntryMailPassword))
+            if (string.IsNullOrEmpty(EntryMailPassword))
             {
-                MainViewModel.GetInstance().MessagePop = new MessagePopViewModel(
-                "Error",
-                Lenguages.Literal("PasswordFill"),
-                "OK", null, "nulo");
-                await PopupNavigation.Instance.PushAsync(new MessagePopPagina());
-
+                await dialogService.ShowMessage(
+                    "Error",
+                    "You must enter the current password.");
                 return;
             }
 
+            var mainViewModel = MainViewModel.GetInstance();
+
+
+
             if (string.IsNullOrEmpty(EntryPassword))
             {
-                MainViewModel.GetInstance().MessagePop = new MessagePopViewModel(
-                "Error",
-                Lenguages.Literal("RegPasswordRequiered"),
-                "OK", null, "nulo");
-                await PopupNavigation.Instance.PushAsync(new MessagePopPagina());
-                //await dialogService.ShowMessage(
-                //    Lenguages.Literal("Error"), Lenguages.Literal("RegPasswordRequiered"));
+                await dialogService.ShowMessage(
+                    "Error",
+                    "You must enter a new password.");
                 return;
             }
 
             if (EntryPassword.Length < 6)
             {
-                MainViewModel.GetInstance().MessagePop = new MessagePopViewModel(
-                "Error",
-                Lenguages.Literal("RegCharPasswordRequired"),
-                "OK", null, "nulo");
-                await PopupNavigation.Instance.PushAsync(new MessagePopPagina());
-                //await dialogService.ShowMessage(
-                //    Lenguages.Literal("Error"), Lenguages.Literal("RegCharPasswordRequired"));
+                await dialogService.ShowMessage(
+                    "Error",
+                    "The new password must have at least 6 characters length.");
                 return;
             }
 
             if (string.IsNullOrEmpty(EntryRepeatPassword))
             {
-                MainViewModel.GetInstance().MessagePop = new MessagePopViewModel(
-                "Error",
-                Lenguages.Literal("RegConfirmRequired"),
-                "OK", null, "nulo");
-                await PopupNavigation.Instance.PushAsync(new MessagePopPagina());
-                //await dialogService.ShowMessage(
-                //    Lenguages.Literal("Error"), Lenguages.Literal("RegConfirmRequired"));
+                await dialogService.ShowMessage(
+                    "Error",
+                    "You must enter a new password confirm.");
                 return;
             }
 
             if (!EntryPassword.Equals(EntryRepeatPassword))
             {
-                MainViewModel.GetInstance().MessagePop = new MessagePopViewModel(
-                "Error",
-                Lenguages.Literal("RegMatchRequired"),
-                "OK", null, "nulo");
-                await PopupNavigation.Instance.PushAsync(new MessagePopPagina());
-                //await dialogService.ShowMessage(
-                //    Lenguages.Literal("Error"), Lenguages.Literal("RegMatchRequired"));
+                await dialogService.ShowMessage(
+                    "Error",
+                    "The new password and confirm, does not match.");
                 return;
             }
-
 
             IsRunning = true;
             IsEnabled = false;
@@ -199,65 +176,44 @@
                 return;
             }
 
+            var changePasswordRequest = new ChangePasswordRequest
+            {
+                CurrentPassword = EntryMailPassword,
+                Email = mainViewModel.MailRecovery,
+                NewPassword = EntryPassword,
+            };
+
             var urlAPI = Application.Current.Resources["AzureUrl"].ToString();
 
-
-            ChangePasswordRequest cadena = new ChangePasswordRequest();
-            cadena.Email = MainViewModel.GetInstance().mailRecovery;
-            cadena.CurrentPassword = EntryMailPassword;
-            cadena.NewPassword = EntryPassword;
-
-            //var json = JsonConvert.SerializeObject(cadena);
-
-            var response = await apiService.PasswordConfirm(urlAPI, "/api", "/Customers/ChangePassword", cadena);
-
-
+            var response = await apiService.ChangePassword(
+                urlAPI,
+                "/api",
+                "/Customers/ChangePassword",
+             /*   mainViewModel.Token.TokenType,
+                mainViewModel.Token.AccessToken,*/
+                changePasswordRequest);
 
             if (!response.IsSuccess)
             {
                 IsRunning = false;
                 IsEnabled = true;
                 await dialogService.ShowMessage(
-                    Lenguages.Literal("Error"),
-                    Lenguages.Literal("Recovery"));
+                    "Error",
+                    response.Message);
                 return;
             }
 
-            MainViewModel.GetInstance().MessagePop = new MessagePopViewModel(
-            Lenguages.Literal("NewPasswordCreated"),
-            Lenguages.Literal("NewPasswordCreatedTitle"),
-            "OK", null, "nulo");
-            await PopupNavigation.Instance.PushAsync(new MessagePopPagina());
+            //mainViewModel.Token.Password = EntryPassword;
+            //dataService.Update(mainViewModel.Token);
 
-            //await dialogService.ShowMessage(
-            //    Lenguages.Literal("NewPasswordCreated"),
-            //    Lenguages.Literal("NewPasswordCreatedTitle"));
-
-            Debug.WriteLine("0 poproot");
-
-            // Hacemos logout y eleminamos los datos del usuario conectado
-            App.CredentialsService.DeleteCredentials();
-            await Application.Current.SavePropertiesAsync();
-
-            Debug.WriteLine("1 poproot");
-
-            // Log de Usuario de sesion
-            //var data = new { IdUser = MainViewModel.GetInstance().Token.Customer.CustomerId, IdAction = 2 };
-            //Util.enviarUserActionLog(data, MainViewModel.GetInstance().Token.Customer.CustomerId);
-
-            //MainViewModel.GetInstance().Login = new LoginViewModel();
-            //navigationService.SetMainPage("LoginPagina");
-
-            Debug.WriteLine("Antes poproot");
+            await dialogService.ShowMessage(
+                "Confirm",
+                "The password was changed successfully");
             await App.Current.MainPage.Navigation.PopToRootAsync();
-            Debug.WriteLine("Despues poproot");
 
             IsRunning = false;
             IsEnabled = true;
-            */
         }
-
-
         #endregion
     }
 }

@@ -4,6 +4,7 @@
     using System.Windows.Input;
     using GalaSoft.MvvmLight.Command;
     using Services;
+    using Tmp.Helpers;
     using Xamarin.Forms;
 
     public class PasswordRecoveryViewModel : INotifyPropertyChanged
@@ -13,7 +14,7 @@
         #endregion
 
         #region Services
-        //ApiService apiService;
+        ApiService apiService;
         DialogService dialogService;
         NavigationService navigationService;
         #endregion
@@ -71,10 +72,9 @@
         #region Constructors
         public PasswordRecoveryViewModel()
         {
-           // apiService = new ApiService();
+            apiService = new ApiService();
             dialogService = new DialogService();
             navigationService = new NavigationService();
-            // Title = Resx.AppResources.Literal("ResetPassword");
             IsEnabled = true;
         }
         #endregion
@@ -90,25 +90,19 @@
 
         async void Save()
         {
-            /*if (string.IsNullOrEmpty(Email))
+            if (string.IsNullOrEmpty(Email))
             {
 
-                MainViewModel.GetInstance().MessagePop = new MessagePopViewModel(
-                "Error",
-                Lenguages.Literal("RegMailValid"),
-                "OK", null, "nulo");
-                await PopupNavigation.Instance.PushAsync(new MessagePopPagina());
+                await dialogService.ShowMessage(
+                    Lenguages.Literal("Error"), Lenguages.Literal("MailObligatorio"));
 
                 return;
             }
 
             if (!RegexUtilities.IsValidEmail(Email))
             {
-                MainViewModel.GetInstance().MessagePop = new MessagePopViewModel(
-                "Error",
-                Lenguages.Literal("RegMailValid"),
-                "OK", null, "nulo");
-                await PopupNavigation.Instance.PushAsync(new MessagePopPagina());
+                await dialogService.ShowMessage(
+                    Lenguages.Literal("Error"), Lenguages.Literal("MailIncorrecto"));
 
                 return;
             }
@@ -134,62 +128,28 @@
             {
                 IsRunning = false;
                 IsEnabled = true;
-                MainViewModel.GetInstance().MessagePop = new MessagePopViewModel(
-                "Error",
-                Lenguages.Literal("Recovery"),
-                "OK", null, "nulo");
-                await PopupNavigation.Instance.PushAsync(new MessagePopPagina());
-                //await dialogService.ShowMessage( Lenguages.Literal("Error"),Lenguages.Literal("Recovery"));
+
+                await dialogService.ShowMessage( Lenguages.Literal("Error"),Lenguages.Literal("Recovery"));
                 return;
             }
 
-            MainViewModel.GetInstance().MessagePop = new MessagePopViewModel(
-            Lenguages.Literal("WeSend"),
-            Lenguages.Literal("RecoveryMail"),
-            "OK", null, "nulo");
-            await PopupNavigation.Instance.PushAsync(new MessagePopPagina());
-            //await dialogService.ShowMessage( Lenguages.Literal("WeSend"),  Lenguages.Literal("RecoveryMail"));
+            await dialogService.ShowMessage(Lenguages.Literal("Error"), "Se le ha enviado un e-mail");
 
 
-            //await navigationService.BackOnLogin();
-
-            MainViewModel.GetInstance().mailRecovery = Email;
-            */
+            MainViewModel.GetInstance().MailRecovery = Email;
 
 
+            MainViewModel.GetInstance().PasswordConfirm =
+                new PasswordConfirmViewModel();
             await navigationService.Navigate("PasswordConfirmPagina");
 
             IsRunning = false;
             IsEnabled = true;
         }
 
-        /*public string Title
-        {
-            set
-            {
-                title = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Title)));
-            }
-            get
-            {
-                return title;
-            }
-        }*/
 
-        public ICommand VolverCommand
-        {
-            get
-            {
-                return new RelayCommand(Volver);
-            }
-        }
 
-        async void Volver()
-        {
 
-            await App.Current.MainPage.Navigation.PopAsync();
-
-        }
         #endregion
     }
 }

@@ -4,6 +4,7 @@ using System.Text;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using Xamarin.Forms;
+using Tmp.Models;
 
 namespace Tmp.ViewModels
 {
@@ -16,6 +17,12 @@ namespace Tmp.ViewModels
         public RegisterViewModel Register { get; set; }
         public PasswordRecoveryViewModel PasswordRecovery { get; set; }
         public PasswordConfirmViewModel PasswordConfirm { get; set; }
+
+
+        public TokenResponse Token { get; set; }
+        public String MailRecovery { get; set; }
+        public String User { get; set; }
+        public Customer Customer { get; set; }
 
 
         #endregion

@@ -5,7 +5,7 @@
             NavigationPage.HasBackButton="True"
             BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem  Text="User"  Icon="hamburger.png">
+        <ToolbarItem  Icon="usericon.png">
         </ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>

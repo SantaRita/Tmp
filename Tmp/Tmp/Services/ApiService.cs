@@ -3,6 +3,7 @@
 
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using Plugin.Connectivity;
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
@@ -17,9 +18,9 @@
     {
 
         public async Task<Response> GetParam(string urlBase,
-     string servicePrefix,
-     string controller
-     )
+         string servicePrefix,
+         string controller
+         )
         {
 
             try
@@ -690,8 +691,8 @@
             string urlBase,
             string servicePrefix,
             string controller,
-            string tokenType,
-            string accessToken,
+           // string tokenType,
+          //  string accessToken,
             ChangePasswordRequest changePasswordRequest)
         {
             try
@@ -704,9 +705,9 @@
                     "application/json");
                 var client = new HttpClient();
 
-                client.DefaultRequestHeaders.Authorization =
+                /*client.DefaultRequestHeaders.Authorization =
                     new AuthenticationHeaderValue(MainViewModel.GetInstance().Token.TokenType,
-                                                  MainViewModel.GetInstance().Token.AccessToken);
+                                                  MainViewModel.GetInstance().Token.AccessToken);*/
                 client.BaseAddress = new Uri(urlBase);
                 var url = string.Format("{0}{1}", servicePrefix, controller);
                 var response = await client.PostAsync(url, content);
@@ -736,7 +737,7 @@
             }
         }
 
-        public async Task<TokenResponse> LoginFacebook(string urlBase, string servicePrefix, string controller, FacebookUser profile)
+        /*public async Task<TokenResponse> LoginFacebook(string urlBase, string servicePrefix, string controller, FacebookUser profile)
         {
             try
             {
@@ -814,7 +815,7 @@
                 Console.WriteLine("An error occurred logingoogle: '{0}'", e);
                 return null;
             }
-        }
+        }*/
 
 
 
@@ -831,12 +832,12 @@
             {
 
 
-                if (mail != null)
+                /*if (mail != null)
                 {
                     username = mail;
                     saveusername = mail;
 
-                }
+                }*/
 
                 // Antes de llamar obtenemos el id en función del usuario:
                 var client = new HttpClient();
@@ -845,7 +846,7 @@
                 var responseUser = await client.PostAsync("api/Customers/GetCustomerIdbyMail?mail=" + username, null);
                 var resultJSON2 = await responseUser.Content.ReadAsStringAsync();
                 var result2 = JsonConvert.DeserializeObject<Customer>(resultJSON2);
-                username = result2.CustomerId.ToString();
+                username = result2.Email.ToString();
 
 
 
@@ -878,32 +879,16 @@
                 // COMO HEMOS OBTENIDO EL CUSTOMER CORRECTAMENTE GUARDAMOS EL LOGIN EN EL "USERACTIONHISTORIES"
 
                 var data = new { IdUser = result2.CustomerId, IdAction = 1 };
-                Util.enviarUserActionLog(data, result2.CustomerId);
+                //Util.enviarUserActionLog(data, result2.CustomerId);
 
                 // Una vez obtenido el token, buscamos también el idcustomer asociado
                 // al mail del usuario
                 result.Customer = new Customer();
                 result.Customer.CustomerId = result2.CustomerId;
-                result.Customer.FirstName = result2.FirstName;
-                result.Customer.LastName = result2.LastName;
-                result.Customer.Gender = result2.Gender;
+                result.Customer.Name = result2.Name;
                 result.Customer.Email = result2.Email;
                 result.Customer.DateCreated = result2.DateCreated;
-                result.Customer.IdLevel = result2.IdLevel;
-                result.Customer.IdFacebook = result2.IdFacebook;
-                result.Customer.IdGoogle = result2.IdGoogle;
-                result.Customer.CustomerType = result2.CustomerType;
-                result.Customer.Country = result2.Country;
-                result.Customer.City = result2.City;
-                result.Customer.Balance = result2.Balance;
-                result.Customer.Avatar = result2.Avatar;
-                result.Customer.BirthDay = result2.BirthDay;
-                result.Customer.SubscriptionDateFinished = result2.SubscriptionDateFinished;
-                result.Customer.SubscriptionFinished = result2.SubscriptionFinished;
-                result.Customer.SubscriptionType = result2.SubscriptionType;
-                result.Customer.DateIntention = result2.DateIntention;
-                //result.IdCurrentPack
-                //result.IdCurrentPack
+                result.Customer.TipoEmpresa = result2.TipoEmpresa;
 
                 return result;
             }
@@ -984,178 +969,12 @@
 
 
 
-        // Activar REgalos
-        public async Task<Response> ActiveGiftPost<Customer>(
-            string urlBase,
-            string servicePrefix,
-            string controller,
-            BankMovement model
-            )
-        {
+        
 
 
 
-            try
-            {
 
-                var request = JsonConvert.SerializeObject(model);
-
-                //HttpContent stringContent = new StringContent(request);
-                //HttpContent fileStreamContent = new StreamContent(imagen);
-
-
-                var content = new StringContent(
-                    request,
-                    Encoding.UTF8,
-                    "application/json");
-
-
-                //var content = new MultipartFormDataContent();
-                //content.Add(stringContent, "example", "example");
-                //content.Add(fileStreamContent, "stream", "stream");
-
-                var client = new HttpClient();
-                client.BaseAddress = new Uri(urlBase);
-                client.DefaultRequestHeaders.Authorization =
-                            new AuthenticationHeaderValue(MainViewModel.GetInstance().Token.TokenType,
-                                      MainViewModel.GetInstance().Token.AccessToken);
-                //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                var url = string.Format("{0}{1}", servicePrefix, controller);
-                var response = await client.PostAsync(url, content);
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    return new Response
-                    {
-                        IsSuccess = false,
-                        Message = response.StatusCode.ToString(),
-                    };
-                }
-
-                var result = await response.Content.ReadAsStringAsync();
-                var newRecord = JsonConvert.DeserializeObject<Customer>(result);
-
-                return new Response
-                {
-                    IsSuccess = true,
-                    Message = "Record added OK",
-                    Result = newRecord,
-                };
-            }
-            catch (Exception ex)
-            {
-                return new Response
-                {
-                    IsSuccess = false,
-                    Message = ex.Message,
-                };
-            }
-        }
-
-
-
-        public async Task<bool> PayWithStripe(string urlBase, StripePaymentRequest model)
-        {
-            try
-            {
-                var request = JsonConvert.SerializeObject(model);
-                var content = new StringContent(request, Encoding.UTF8, "application/json");
-                var client = new HttpClient();
-                client.BaseAddress = new Uri(urlBase);
-                var response = await client.PostAsync(urlBase, content);
-
-                if (!response.IsSuccessStatusCode)
-                    return false;
-                else
-                {
-                    var result = await response.Content.ReadAsStringAsync();
-                    if (!string.IsNullOrEmpty(result))
-                    {
-                        var res = JsonConvert.DeserializeObject(result);
-                        if (res.Equals(true) || res.Equals(false))
-                            return (bool)res;
-                        else
-                            return false;
-                    }
-                }
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }
-
-
-        // Activar REgalos
-        public async Task<Response> BuyComprar<Customer>(
-            string urlBase,
-            string servicePrefix,
-            string controller,
-            BankMovement model
-            )
-        {
-
-
-
-            try
-            {
-
-                var request = JsonConvert.SerializeObject(model);
-
-                //HttpContent stringContent = new StringContent(request);
-                //HttpContent fileStreamContent = new StreamContent(imagen);
-
-
-                var content = new StringContent(
-                    request,
-                    Encoding.UTF8,
-                    "application/json");
-
-
-                //var content = new MultipartFormDataContent();
-                //content.Add(stringContent, "example", "example");
-                //content.Add(fileStreamContent, "stream", "stream");
-
-                var client = new HttpClient();
-                client.BaseAddress = new Uri(urlBase);
-                client.DefaultRequestHeaders.Authorization =
-                    new AuthenticationHeaderValue(MainViewModel.GetInstance().Token.TokenType,
-                                      MainViewModel.GetInstance().Token.AccessToken);
-                //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                var url = string.Format("{0}{1}", servicePrefix, controller);
-                var response = await client.PostAsync(url, content);
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    return new Response
-                    {
-                        IsSuccess = false,
-                        Message = response.StatusCode.ToString(),
-                    };
-                }
-
-                var result = await response.Content.ReadAsStringAsync();
-                var newRecord = JsonConvert.DeserializeObject<Customer>(result);
-
-                return new Response
-                {
-                    IsSuccess = true,
-                    Message = "Record added OK",
-                    Result = newRecord,
-                };
-            }
-            catch (Exception ex)
-            {
-                return new Response
-                {
-                    IsSuccess = false,
-                    Message = ex.Message,
-                };
-            }
-        }
-
+        
         public async Task<int> GetUserName(string urlBase, string username, int customerID)
         {
 
@@ -1208,32 +1027,7 @@
 
 
 
-        public async Task<DayData> GetResponceforDays(string urlBase, string userId)
-        {
-            DayData dayData = null;
-            try
-            {
-
-                var client = new HttpClient();
-
-                client.BaseAddress = new Uri(urlBase);
-                client.DefaultRequestHeaders.Authorization =
-                    new AuthenticationHeaderValue(MainViewModel.GetInstance().Token.TokenType,
-                                      MainViewModel.GetInstance().Token.AccessToken);
-                // http://innermapapi20180719064945.azurewebsites.net/api/Customers/GetProfileQuestions?idUser=<iduser>
-                var response2 = await client.PostAsync("api/Customers/GetProfileQuestions?idUser=" + userId, null);
-                var resultJSON2 = await response2.Content.ReadAsStringAsync();
-                dayData = JsonConvert.DeserializeObject<DayData>(resultJSON2);
-
-
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
-
-            }
-            return dayData;
-        }
+        
 
         public async Task<Response> Get<T>(
             string urlBase,

@@ -3,16 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"              
              x:Class="Tmp.Views.RegisterPagina"
+             xmlns:local="clr-namespace:Tmp.ViewModels;assembly=Tmp" 
+             Title="Registrar Usuario"
+             BackgroundColor="#FEFAC0"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
+    <ContentPage.BindingContext>
+        <local:RegisterViewModel />
+    </ContentPage.BindingContext>    
   <ContentPage.Content>
-        <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" BackgroundColor="White">
-
-
-
-            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10,120,10,0">
-                <ScrollView BindingContext="{Binding Register}">
-                    <StackLayout BackgroundColor="White">
-                        <Grid Padding="0" BackgroundColor="White">
+        <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" BackgroundColor="#FEFAC0">
+            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10,0,10,0">
+                <ScrollView>
+                    <StackLayout BackgroundColor="#FEFAC0">
+                        <Grid Padding="0" BackgroundColor="#FEFAC0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
@@ -28,7 +31,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Entry TextColor="Black" x:Name="EntryUser" PlaceholderColor="Gray"  Keyboard="Text" 
                                     Placeholder="Nombre usuario/Razón Social" Grid.Column="1" HorizontalOptions="FillAndExpand" 
-                                    Text="{Binding User, Mode=TwoWay}"  >
+                                    Text="{Binding Name, Mode=TwoWay}"  >
                                     <Entry.HeightRequest>
                                         <OnPlatform x:TypeArguments="x:Double" iOS="40" Android="50"  />
                                     </Entry.HeightRequest>
@@ -76,7 +79,7 @@
                             <Entry TextColor="Black" x:Name="Mail" PlaceholderColor="Gray"  Keyboard="Email" 
                                        Placeholder="Correo electrónico" IsPassword="True" 
                                        Grid.Column="1" HorizontalOptions="FillAndExpand" 
-                                    Text="{Binding Confirm, Mode=TwoWay}"  >
+                                    Text="{Binding Email, Mode=TwoWay}"  >
                                 <Entry.HeightRequest>
                                     <OnPlatform x:TypeArguments="x:Double" iOS="40" Android="50"  />
                                 </Entry.HeightRequest>
@@ -106,8 +109,8 @@
                         </ActivityIndicator>
 
                         <Button x:Name="btSubmit" Command="{Binding SaveCommand}" VerticalOptions="EndAndExpand"  FontAttributes="Bold" Text="Submit" 
-                                HorizontalOptions="FillAndExpand" BackgroundColor="Silver" IsEnabled="{Binding IsEnabled, Mode=TwoWay}" TextColor="Gray"
-                            FontSize="16" BorderColor="Silver" BorderWidth="2" BorderRadius="20" Margin="5,20,5,20">
+                                HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource AzulOscuro}" IsEnabled="{Binding IsEnabled, Mode=TwoWay}" TextColor="White"
+                            FontSize="16" BorderColor="Silver" BorderWidth="2" BorderRadius="10" Margin="20,20,20,0">
                         </Button>
                     </StackLayout>
                 </ScrollView>

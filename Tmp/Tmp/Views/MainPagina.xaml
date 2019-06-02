@@ -5,10 +5,10 @@
              x:Class="Tmp.Views.MainPagina"
              >
     <MasterDetailPage.Master>
-        <local:MainPaginaMaster x:Name="mainPaginaMaster" />
+        <local:MainPaginaMaster x:Name="mainPaginaMaster" Icon="usericon.png"/>
     </MasterDetailPage.Master>
     <MasterDetailPage.Detail>
-        <NavigationPage>
+        <NavigationPage Icon="usericon.png">
             <x:Arguments>
                 <local:MainPaginaDetail />
             </x:Arguments>

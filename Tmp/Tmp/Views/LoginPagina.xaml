@@ -1,20 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="Tmp.Views.LoginPagina"
-             xmlns:local="clr-namespace:Tmp.ViewModels;assembly=Tmp" 
+             xmlns:local2="clr-namespace:Tmp.ViewModels;assembly=Tmp" 
              BackgroundColor="#FEFAC0"
+             xmlns:local="clr-namespace:Tmp.Helpers;assembly=Tmp" 
+             xmlns:i18n="clr-namespace:Tmp;assembly=Tmp"
              NavigationPage.HasNavigationBar="False"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.BindingContext>
-        <local:LoginViewModel />
+        <local2:LoginViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#FEFAC0">
                 <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="#FEFAC0" Padding="8" Spacing="10" Margin="0,0,0,0">
-                    <Image Source="xamarin_logo.png" Margin="0,10,0,20" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+                    <Image Source="tmplogo.png" Margin="0,10,0,20" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
                     </Image>
                     <Grid Margin="50,0,50,0" RowSpacing="0" ColumnSpacing="0">
                         <Grid.RowDefinitions>
@@ -24,7 +25,7 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <Entry TextColor="Black" x:Name="EntryUserName" PlaceholderColor="Gray" Placeholder="Username"  Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Keyboard="Email" 
+                        <Entry TextColor="Black" x:Name="EntryUserName" PlaceholderColor="Gray" Placeholder="{i18n:Translate Mail}"  Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Keyboard="Email" 
                         Text="{Binding Email}"  >
                             <Entry.HeightRequest>
                                 <OnPlatform x:TypeArguments="x:Double" iOS="40" Android="50"  />

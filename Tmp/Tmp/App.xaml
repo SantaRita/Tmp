@@ -6,19 +6,21 @@
 
     <Application.Resources>
         <ResourceDictionary>
+            
+            
             <!--Global Styles-->
             <Color x:Key="NavigationPrimary">#2196F3</Color>
          
             <!-- Styles -->
             <Style TargetType="NavigationPage">
-                <Setter Property="BarBackgroundColor" Value="#00E0C7"/>
-                <Setter Property="BarTextColor" Value="#FF7057"/>
+                <Setter Property="BarBackgroundColor" Value="#2E1572"/>
+                <Setter Property="BarTextColor" Value="White"/>
             </Style>
             <!-- Styles -->
             <!-- Locator -->
             <infra:InstanceLocator x:Key="Locator"></infra:InstanceLocator>
             <!-- Variables globales -->
-            <x:String x:Key="AzureUrl">http://meditacionapi20171120100738.azurewebsites.net</x:String>
+            <x:String x:Key="AzureUrl">http://tmp20190301014650.azurewebsites.net/</x:String>
             <!-- Colors-->
             <Color x:Key="AzulOscuro">#2E1572</Color>
             <Color x:Key="AzulClaro">#5AC8FA</Color>
