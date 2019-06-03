@@ -5,7 +5,6 @@
              xmlns:local2="clr-namespace:Tmp.ViewModels;assembly=Tmp" 
              BackgroundColor="#FEFAC0"
              xmlns:local="clr-namespace:Tmp.Helpers;assembly=Tmp" 
-             xmlns:i18n="clr-namespace:Tmp;assembly=Tmp"
              NavigationPage.HasNavigationBar="False"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.BindingContext>
@@ -25,7 +24,7 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <Entry TextColor="Black" x:Name="EntryUserName" PlaceholderColor="Gray" Placeholder="{i18n:Translate Mail}"  Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Keyboard="Email" 
+                        <Entry TextColor="Black" x:Name="EntryUserName" PlaceholderColor="Gray" Placeholder="Mail"  Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Keyboard="Email" 
                         Text="{Binding Email}"  >
                             <Entry.HeightRequest>
                                 <OnPlatform x:TypeArguments="x:Double" iOS="40" Android="50"  />
