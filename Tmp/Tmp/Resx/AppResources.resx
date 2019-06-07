@@ -117,7 +117,118 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="AcceptTerms" xml:space="preserve">
+    <value>Accept</value>
+  </data>
+  <data name="CheckConnection" xml:space="preserve">
+    <value>Error retreiving data. Check connection please</value>
+  </data>
+  <data name="CloseSession" xml:space="preserve">
+    <value>Close Session</value>
+  </data>
+  <data name="ConfirmLiteral" xml:space="preserve">
+    <value>Enter the mail of your TMP account and follow the instructions of the mail you will receive</value>
+  </data>
+  <data name="ConfirmPwd" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contacto</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>You must enter the current password</value>
+  </data>
+  <data name="ForgotPwd" xml:space="preserve">
+    <value>Forgot Password?</value>
+  </data>
+  <data name="Goods" xml:space="preserve">
+    <value>Goods</value>
+  </data>
+  <data name="HaveAccount" xml:space="preserve">
+    <value>Dont Have Account</value>
+  </data>
+  <data name="LengthPwd" xml:space="preserve">
+    <value>The new password must have at least 6 characters length</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
   <data name="Mail" xml:space="preserve">
-    <value>Mail2</value>
+    <value>Mail</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>You must enter a new password</value>
+  </data>
+  <data name="NewPasswordConfirm" xml:space="preserve">
+    <value>You must enter a new password confirm</value>
+  </data>
+  <data name="NewPlan" xml:space="preserve">
+    <value>New Plan</value>
+  </data>
+  <data name="NewUser" xml:space="preserve">
+    <value>Register New User</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PasswordRecovery" xml:space="preserve">
+    <value>Password recovery</value>
+  </data>
+  <data name="PasswordRequired" xml:space="preserve">
+    <value>You must enter a password</value>
+  </data>
+  <data name="PwdChanged" xml:space="preserve">
+    <value>Password Changed</value>
+  </data>
+  <data name="PwdChangedOk" xml:space="preserve">
+    <value>The password was changed successfully</value>
+  </data>
+  <data name="PwdNotMatch" xml:space="preserve">
+    <value>The new password and confirm, does not match.</value>
+  </data>
+  <data name="ReceivedCode" xml:space="preserve">
+    <value>Fill password recovery email received and new password</value>
+  </data>
+  <data name="Recovery" xml:space="preserve">
+    <value>We can't send the new password to this email</value>
+  </data>
+  <data name="RecoveryMail" xml:space="preserve">
+    <value>Open the email you received and follow the instructions to create a new password</value>
+  </data>
+  <data name="RegMailRequired" xml:space="preserve">
+    <value>You must enter a email</value>
+  </data>
+  <data name="RegMailValid" xml:space="preserve">
+    <value>You must enter a valid email</value>
+  </data>
+  <data name="Rights" xml:space="preserve">
+    <value>THE MARKETING PLANNER is an original idea and exclusive product of BRANDING SOUND SYSTEM. All rights reserved - 2019</value>
+  </data>
+  <data name="SelectPlan" xml:space="preserve">
+    <value>Select Plan</value>
+  </data>
+  <data name="SelectProduct" xml:space="preserve">
+    <value>Select if your product is a good or a service</value>
+  </data>
+  <data name="ServerErrorLogin" xml:space="preserve">
+    <value>Account is not registered</value>
+  </data>
+  <data name="Services" xml:space="preserve">
+    <value>Services</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="Terms" xml:space="preserve">
+    <value>Terms and Conditions</value>
+  </data>
+  <data name="TmpSubtitle" xml:space="preserve">
+    <value>THE MARKETING PLANNER</value>
+  </data>
+  <data name="WeSend" xml:space="preserve">
+    <value>We send you an email</value>
   </data>
 </root>

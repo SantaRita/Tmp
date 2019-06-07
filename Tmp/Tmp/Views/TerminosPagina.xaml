@@ -1,12 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Tmp.Views.TerminosPagina">
+             x:Class="Tmp.Views.TerminosPagina"
+             xmlns:i18n="clr-namespace:Tmp.Helpers"
+             Title="{i18n:Translate Terms}"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}" >
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Terminos y Condiciones"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="9*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <ScrollView Margin="5,0,0,5" Grid.Row="1" Grid.Column="0">
+                    <StackLayout BindingContext="{Binding Terminos}">
+                        <ActivityIndicator IsRunning="{Binding IsRunning, Mode=TwoWay}" VerticalOptions="CenterAndExpand">
+                            <ActivityIndicator.Color>
+                                <OnPlatform x:TypeArguments="Color" iOS="#FF7057" Android="#FF7057" />
+                            </ActivityIndicator.Color>
+                        </ActivityIndicator>
+                        <Label FormattedText="{Binding Terminos, Mode=TwoWay}"  HorizontalOptions="Center" Margin="20,0,20,0" VerticalOptions="Center" TextColor="Black">
+                        </Label>
+                    </StackLayout>
+                </ScrollView>
+            </Grid>
+            <Button x:Name="btAceptar" Margin="80,20,80,0" Clicked="BtAceptar_Clicked" IsVisible="False"
+                    FontAttributes="Bold" 
+                    Text="{i18n:Translate AcceptTerms}" 
+                    HorizontalOptions="FillAndExpand" VerticalOptions="End" 
+                    BackgroundColor="{StaticResource AzulClaro}" TextColor="{StaticResource AzulOscuro}"
+                    FontSize="16" BorderColor="{StaticResource AzulClaro}" BorderWidth="2" BorderRadius="10">
+            </Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

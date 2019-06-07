@@ -3,22 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tmp.Models;
 using Tmp.Services;
+using Tmp.ViewModels;
+using Xamarin.Auth;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+
 namespace Tmp.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class CargaPagina : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class CargaPagina : ContentPage
+    {
 
+        #region Services
+        ApiService apiService;
+        DialogService dialogService;
         NavigationService navigationService;
 
-        public CargaPagina ()
-		{
-			InitializeComponent ();
-		}
+        public static ICredentialsService CredentialsService { get; private set; }
+
+        #endregion
+
+        public CargaPagina()
+        {
+            InitializeComponent();
+        }
 
 
         protected override void OnAppearing()
@@ -26,16 +37,18 @@ namespace Tmp.Views
 
 
             navigationService = new NavigationService();
+            apiService = new ApiService();
+            dialogService = new DialogService();
+            navigationService = new NavigationService();
+            CredentialsService = new CredentialsService();
             // Inicialización de credenciales
 
             Device.BeginInvokeOnMainThread(async () =>
             {
 
 
-                navigationService.SetMainPage("LoginPagina");
 
-
-                /*if (CredentialsService.DoCredentialsExist())
+                if (CredentialsService.DoCredentialsExist())
 
                 {
                     // Como ya existen las credencionales vamos a recuperar los datos
@@ -72,22 +85,11 @@ namespace Tmp.Views
                             {
                                 if ((String)Application.Current.Properties["user_" + mainViewModel.Token.Customer.CustomerId] == mainViewModel.Token.Customer.Email)
                                 {
-                                    if (!Application.Current.Properties.ContainsKey("heart_" + mainViewModel.Token.Customer.CustomerId))
-                                    {
-                                        Application.Current.Properties.Add("heart_" + mainViewModel.Token.Customer.CustomerId, "1");
-                                    }
-                                    if (!Application.Current.Properties.ContainsKey("tip_" + mainViewModel.Token.Customer.CustomerId))
-                                    {
-                                        Application.Current.Properties.Add("tip_" + mainViewModel.Token.Customer.CustomerId, "1");
-                                    }
-                                    if (!Application.Current.Properties.ContainsKey("feel_" + mainViewModel.Token.Customer.CustomerId))
-                                    {
-                                        Application.Current.Properties.Add("feel_" + mainViewModel.Token.Customer.CustomerId, "1");
-                                    }
+
                                     await Application.Current.SavePropertiesAsync();
 
-                                    //navigationService.SetMainPage("TabPagina");
-                                    await navigationService.PaginaPrincipal();
+                                    navigationService.SetMainPage("MasterDetailPagina");
+
 
                                 }
 
@@ -95,23 +97,8 @@ namespace Tmp.Views
                             }
                             else
                             {
-                                Application.Current.Properties.Remove("heart_" + mainViewModel.Token.Customer.CustomerId);
-                                Application.Current.Properties.Remove("tip_" + mainViewModel.Token.Customer.CustomerId);
-                                Application.Current.Properties.Remove("feel_" + mainViewModel.Token.Customer.CustomerId);
+                                navigationService.SetMainPage("MasterDetailPagina");
 
-                                Application.Current.Properties.Add("user_" + mainViewModel.Token.Customer.CustomerId, mainViewModel.Token.Customer.Email);
-                                Application.Current.Properties.Add("heart_" + mainViewModel.Token.Customer.CustomerId, "1");
-                                Application.Current.Properties.Add("tip_" + mainViewModel.Token.Customer.CustomerId, "1");
-                                Application.Current.Properties.Add("feel_" + mainViewModel.Token.Customer.CustomerId, "1");
-
-                                await Application.Current.SavePropertiesAsync();
-                                //navigationService.SetMainPage("HeartRatePagina");
-                                // if (Device.RuntimePlatform == Device.iOS)
-                                //navigationService.SetMainPage("TabPagina");
-                                await navigationService.PaginaPrincipal();
-
-                                //  else
-                                //  navigationService.SetMainPage("TabPagina1");
 
                             }
 
@@ -138,14 +125,37 @@ namespace Tmp.Views
                 }
                 else
                 {
-                    //await Imagen.FadeTo(0, 800);
                     navigationService.SetMainPage("LoginPagina");
                 }
-                */
+
             });
 
 
 
         }
+
+
+
+
+        public async Task<TokenResponse> LoginCredentialsTokenAsync(String pUsu, String pPwd)
+        {
+            // Llamada al api para el login de usuario
+            var response = await apiService.GetToken((String)Application.Current.Resources["AzureUrl"], pUsu, pPwd, null);
+
+            if (response == null)
+            {
+                await dialogService.ShowMessage("Error", "The service is not available, please try latter.");
+                return response;
+            }
+
+            /*if (string.IsNullOrEmpty(response.AccessToken))
+            {
+                await dialogService.ShowMessage("Error", response.ErrorDescription);
+                return response;
+            }*/
+
+            return response;
+        }
+
     }
 }

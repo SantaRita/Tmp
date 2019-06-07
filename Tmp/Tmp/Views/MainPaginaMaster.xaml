@@ -12,22 +12,35 @@
       <ListView.Header>
         <Grid BackgroundColor="#03A9F4">
           <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="AUTO"/>
+            <ColumnDefinition Width="*"/>
           </Grid.ColumnDefinitions>
           <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="80"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="10"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="20*"/>
           </Grid.RowDefinitions>
+
+          <Image Source="usericon" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+                 Grid.Column="1"
+                 Grid.Row="0"/>
+          <Label
+              Grid.Column="1"
+              Grid.Row="1"
+              x:Name="UserName"
+              HorizontalOptions="CenterAndExpand"
+              Style="{DynamicResource SubtitleStyle}"
+              FontSize="28"/>
           <Label
               Grid.Column="1"
               Grid.Row="2"
-              Text="AppName"
-              Style="{DynamicResource SubtitleStyle}"/>
-        </Grid>
+              x:Name="Mail"
+              HorizontalOptions="CenterAndExpand"
+              Style="{DynamicResource SubtitleStyle}"
+              FontSize="26"/>
+                </Grid>
       </ListView.Header>
       <ListView.ItemTemplate>
         <DataTemplate>

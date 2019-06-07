@@ -131,13 +131,13 @@ namespace Tmp.ViewModels
 
                 if (string.IsNullOrEmpty(Email))
                 {
-                    await dialogService.ShowMessage("Error", "AppResources.MailRequired");
+                    await dialogService.ShowMessage("Error", Lenguages.Literal("RegMailRequired"));
                     return;
                 }
 
                 if (string.IsNullOrEmpty(Password))
                 {
-                    await dialogService.ShowMessage("Error", "AppResources.PasswordRequired");
+                    await dialogService.ShowMessage("Error", Lenguages.Literal("PasswordRequired"));
                     return;
                 }
 
@@ -148,7 +148,7 @@ namespace Tmp.ViewModels
                 {
                     IsRunning = false;
                     IsEnabled = true;
-                    await dialogService.ShowMessage("Error", "AppResources.CheckConnection");
+                    await dialogService.ShowMessage("Error", Lenguages.Literal("CheckConnection"));
                     return;
                 }
 
@@ -157,7 +157,7 @@ namespace Tmp.ViewModels
                 {
                     IsRunning = false;
                     IsEnabled = true;
-                    await dialogService.ShowMessage("Error", "AppResources.CheckConnection2");
+                    await dialogService.ShowMessage("Error", Lenguages.Literal("CheckConnection"));
                     return;
                 }
 
@@ -191,12 +191,13 @@ namespace Tmp.ViewModels
 
                 // Si llego hasta aquí es porque el login es ok y vamos a la página principal
                 // Guardamos el token para usarlo en cualquier momento de la app.
-                //bool doCredentialsExist = App.CredentialsService.DoCredentialsExist();
-                // Alberto -- Lo quitamos para IOS de momento. Hay que volverlo a poner
-                //if (!doCredentialsExist)
-                //{
-                //App.CredentialsService.SaveCredentials(Email, Password);
-                //}
+
+                bool doCredentialsExist = App.CredentialsService.DoCredentialsExist();
+                
+                if (!doCredentialsExist)
+                {
+                    App.CredentialsService.SaveCredentials(Email, Password);
+                }
 
                 // Ponemos los datos a nivel de sesion del usuario
                 // Device Registation for push notification //
@@ -211,25 +212,12 @@ namespace Tmp.ViewModels
                 IsEnabled = true;
                 mainViewModel.Token = response;
 
-                //mainViewModel.Home = new HomeViewModel();
-                //mainViewModel.MenuHamburguer = new MenuHamburguerViewModel();
 
-                /*if (Application.Current.Properties.ContainsKey("user_" + mainViewModel.Token.Customer.CustomerId))
+                if (Application.Current.Properties.ContainsKey("user_" + mainViewModel.Token.Customer.CustomerId))
                 {
                     if ((String)Application.Current.Properties["user_" + mainViewModel.Token.Customer.CustomerId] == mainViewModel.Token.Customer.Email)
                     {
-                        if (!Application.Current.Properties.ContainsKey("heart_" + mainViewModel.Token.Customer.CustomerId))
-                        {
-                            Application.Current.Properties.Add("heart_" + mainViewModel.Token.Customer.CustomerId, "1");
-                        }
-                        if (!Application.Current.Properties.ContainsKey("feel_" + mainViewModel.Token.Customer.CustomerId))
-                        {
-                            Application.Current.Properties.Add("feel_" + mainViewModel.Token.Customer.CustomerId, "1");
-                        }
-                        if (!Application.Current.Properties.ContainsKey("tip_" + mainViewModel.Token.Customer.CustomerId))
-                        {
-                            Application.Current.Properties.Add("tip_" + mainViewModel.Token.Customer.CustomerId, "1");
-                        }
+
                         await Application.Current.SavePropertiesAsync();
 
                         navigationService.SetMainPage("MasterDetailPagina");
@@ -240,22 +228,14 @@ namespace Tmp.ViewModels
                 }
                 else
                 {
-                    Application.Current.Properties.Remove("heart_" + mainViewModel.Token.Customer.CustomerId);
-                    Application.Current.Properties.Remove("tip_" + mainViewModel.Token.Customer.CustomerId);
-                    Application.Current.Properties.Remove("feel_" + mainViewModel.Token.Customer.CustomerId);
 
-                    Application.Current.Properties.Add("user_" + mainViewModel.Token.Customer.CustomerId, mainViewModel.Token.Customer.Email);
-                    Application.Current.Properties.Add("heart_" + mainViewModel.Token.Customer.CustomerId, "1");
-                    Application.Current.Properties.Add("feel_" + mainViewModel.Token.Customer.CustomerId, "1");
-
-                    Application.Current.Properties.Add("tip_" + mainViewModel.Token.Customer.CustomerId, "1");
                     await Application.Current.SavePropertiesAsync();
 
                     navigationService.SetMainPage("MasterDetailPagina");
 
-                }*/
+                }
 
-                navigationService.SetMainPage("MasterDetailPagina");
+                //navigationService.SetMainPage("MasterDetailPagina");
             }
             catch (Exception ex)
             {
@@ -268,7 +248,8 @@ namespace Tmp.ViewModels
         private async void Register()
         {
             Debug.WriteLine("Entramos Register");
-            await navigationService.Navigate("RegisterPagina");
+            //await navigationService.Navigate("RegisterPagina");
+            await navigationService.Navigate("TerminosPagina");
         }
 
         
@@ -383,8 +364,7 @@ namespace Tmp.ViewModels
 
         async void RecoverPassword()
         {
-            MainViewModel.GetInstance().PasswordRecovery =
-                new PasswordRecoveryViewModel();
+            MainViewModel.GetInstance().PasswordRecovery = new PasswordRecoveryViewModel();
             await navigationService.Navigate("PasswordRecovery");
         }
 

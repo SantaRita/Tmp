@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
 using Tmp.ViewModels;
@@ -34,8 +35,6 @@ namespace Tmp.Services
 
                 case "MasterDetailPagina":
 
-
-                    
                     Application.Current.MainPage = new MainPagina();
                     break;
             }
@@ -54,6 +53,11 @@ namespace Tmp.Services
             {
                 case "RegisterPagina":
                     await App.Current.MainPage.Navigation.PushAsync(new RegisterPagina());
+                    break;
+                case "TerminosPagina":
+                    MainViewModel.GetInstance().BotonTerminos = true;
+                    MainViewModel.GetInstance().Terminos = new TerminosViewModel();
+                    await App.Current.MainPage.Navigation.PushAsync(new TerminosPagina());
                     break;
                 case "PasswordConfirmPagina":
                     await App.Current.MainPage.Navigation.PushAsync(new PasswordConfirmPagina());
@@ -82,8 +86,15 @@ namespace Tmp.Services
                     await NP.PushAsync(new AboutPagina());
                     break;
 
-                case "TerminosPagina":
 
+                case "WelcomePlanPagina":
+                    MainViewModel.GetInstance().WelcomePlan = new WelcomePlanViewModel();
+                    await NP.PushAsync(new WelcomePlanPagina());
+                    break;
+
+                case "TerminosPagina":
+                    MainViewModel.GetInstance().BotonTerminos = false;
+                    MainViewModel.GetInstance().Terminos = new TerminosViewModel();
                     await NP.PushAsync(new TerminosPagina());
                     break;
 
@@ -93,14 +104,30 @@ namespace Tmp.Services
                     break;
 
                 case "PlanesPagina":
-
-                    Application.Current.MainPage = new NavigationPage(new PlanesPagina());
+                    MainViewModel.GetInstance().Planes = new PlanesViewModel();
+                    await NP.PushAsync(new PlanesPagina());
                     break;
 
                 case "LogoutPagina":
 
-                    Application.Current.MainPage = new NavigationPage(new LoginPagina());
+                    var res = await App.Current.MainPage.DisplayAlert("Cerrar sesión", "¿Desea abandonar la sesión?", "Si", "No");
+
+                    if (res)
+                    {
+
+
+                        // Hacemos logout y eleminamos los datos del usuario conectado
+                        App.CredentialsService.DeleteCredentials();
+                        await Application.Current.SavePropertiesAsync();
+
+                        // Unregister device for push notification //
+                        App.Current.Properties.Remove("Token");
+
+                        Application.Current.MainPage = new NavigationPage(new LoginPagina());
+
+                    }
                     break;
+
 
 
 

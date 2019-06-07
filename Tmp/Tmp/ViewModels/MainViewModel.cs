@@ -17,12 +17,17 @@ namespace Tmp.ViewModels
         public RegisterViewModel Register { get; set; }
         public PasswordRecoveryViewModel PasswordRecovery { get; set; }
         public PasswordConfirmViewModel PasswordConfirm { get; set; }
+        public TerminosViewModel Terminos { get; set; }
+        public Boolean BotonTerminos { get; set; }
+        public WelcomePlanViewModel WelcomePlan { get; set; }
+
 
 
         public TokenResponse Token { get; set; }
         public String MailRecovery { get; set; }
         public String User { get; set; }
         public Customer Customer { get; set; }
+        public Boolean Ayuda { get; set; }
 
 
         #endregion

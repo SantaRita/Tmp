@@ -7,6 +7,8 @@ using Tmp.Interfaces;
 using System.Globalization;
 using System.Diagnostics;
 using System.Reflection;
+using System.Threading.Tasks;
+using Tmp.Models;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Tmp
@@ -39,6 +41,9 @@ namespace Tmp
             foreach (var res in assembly.GetManifestResourceNames())
                 System.Diagnostics.Debug.WriteLine("found resource: " + res);
             System.Diagnostics.Debug.WriteLine("====================================");
+
+
+
             InitializeComponent();
 
             // This lookup NOT required for Windows platforms - the Culture will be automatically set
@@ -58,12 +63,15 @@ namespace Tmp
                 DependencyService.Register<AzureDataStore>();*/
 
 
+            CredentialsService = new CredentialsService();
+
 
             navigationService.SetMainPage("CargaPagina");
 
 
 
         }
+
 
         protected override void OnStart()
         {

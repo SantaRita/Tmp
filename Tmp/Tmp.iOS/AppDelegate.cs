@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using FFImageLoading;
+using FFImageLoading.Forms.Platform;
 using Foundation;
 using UIKit;
 
@@ -22,6 +23,8 @@ namespace Tmp.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+
+
             global::Xamarin.Forms.Forms.Init();
 
             var config = new FFImageLoading.Config.Configuration()

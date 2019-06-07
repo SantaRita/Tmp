@@ -94,7 +94,7 @@
             {
 
                 await dialogService.ShowMessage(
-                    Lenguages.Literal("Error"), Lenguages.Literal("MailObligatorio"));
+                    Lenguages.Literal("Error"), Lenguages.Literal("MailRequired"));
 
                 return;
             }
@@ -102,7 +102,7 @@
             if (!RegexUtilities.IsValidEmail(Email))
             {
                 await dialogService.ShowMessage(
-                    Lenguages.Literal("Error"), Lenguages.Literal("MailIncorrecto"));
+                    Lenguages.Literal("Error"), Lenguages.Literal("RegMailValid"));
 
                 return;
             }
@@ -133,7 +133,7 @@
                 return;
             }
 
-            await dialogService.ShowMessage(Lenguages.Literal("Error"), "Se le ha enviado un e-mail");
+            await dialogService.ShowMessage(Lenguages.Literal("WeSend"), Lenguages.Literal("RecoveryMail"));
 
 
             MainViewModel.GetInstance().MailRecovery = Email;

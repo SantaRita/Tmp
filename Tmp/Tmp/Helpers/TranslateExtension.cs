@@ -8,7 +8,7 @@ using Tmp.Interfaces;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Tmp.Views
+namespace Tmp.Helpers
 {
     // You exclude the 'Extension' suffix when using in XAML
     [ContentProperty("Text")]

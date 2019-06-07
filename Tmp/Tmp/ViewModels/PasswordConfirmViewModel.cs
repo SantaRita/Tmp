@@ -124,7 +124,8 @@
             {
                 await dialogService.ShowMessage(
                     "Error",
-                    "You must enter the current password.");
+                    Lenguages.Literal("CurrentPassword")
+                    );
                 return;
             }
 
@@ -136,7 +137,8 @@
             {
                 await dialogService.ShowMessage(
                     "Error",
-                    "You must enter a new password.");
+                    Lenguages.Literal("NewPassword")
+                    );
                 return;
             }
 
@@ -144,7 +146,7 @@
             {
                 await dialogService.ShowMessage(
                     "Error",
-                    "The new password must have at least 6 characters length.");
+                    Lenguages.Literal("LengthPwd"));
                 return;
             }
 
@@ -152,7 +154,7 @@
             {
                 await dialogService.ShowMessage(
                     "Error",
-                    "You must enter a new password confirm.");
+                    Lenguages.Literal("NewPasswordConfirm"));
                 return;
             }
 
@@ -160,7 +162,7 @@
             {
                 await dialogService.ShowMessage(
                     "Error",
-                    "The new password and confirm, does not match.");
+                    Lenguages.Literal("PwdNotMatch"));
                 return;
             }
 
@@ -207,8 +209,8 @@
             //dataService.Update(mainViewModel.Token);
 
             await dialogService.ShowMessage(
-                "Confirm",
-                "The password was changed successfully");
+                Lenguages.Literal("PwdChanged"),
+                Lenguages.Literal("PwdChangedOk"));
             await App.Current.MainPage.Navigation.PopToRootAsync();
 
             IsRunning = false;

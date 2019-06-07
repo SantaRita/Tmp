@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Tmp.Helpers"
              x:Class="Tmp.Views.LoginPagina"
              xmlns:local2="clr-namespace:Tmp.ViewModels;assembly=Tmp" 
              BackgroundColor="#FEFAC0"
-             xmlns:local="clr-namespace:Tmp.Helpers;assembly=Tmp" 
              NavigationPage.HasNavigationBar="False"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.BindingContext>
@@ -14,7 +14,7 @@
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="#FEFAC0">
                 <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="#FEFAC0" Padding="8" Spacing="10" Margin="0,0,0,0">
-                    <Image Source="tmplogo.png" Margin="0,10,0,20" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+                    <Image Source="tmplogo" Margin="0,10,0,20" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
                     </Image>
                     <Grid Margin="50,0,50,0" RowSpacing="0" ColumnSpacing="0">
                         <Grid.RowDefinitions>
@@ -24,7 +24,9 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <Entry TextColor="Black" x:Name="EntryUserName" PlaceholderColor="Gray" Placeholder="Mail"  Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Keyboard="Email" 
+                        <Entry TextColor="Black" x:Name="EntryUserName" 
+                               PlaceholderColor="Gray" 
+                               Placeholder="{i18n:Translate Mail}"  Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Keyboard="Email" 
                         Text="{Binding Email}"  >
                             <Entry.HeightRequest>
                                 <OnPlatform x:TypeArguments="x:Double" iOS="40" Android="50"  />
@@ -39,7 +41,8 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <Entry x:Name="EntryPassword" TextColor="Black" PlaceholderColor="Gray" Placeholder="Password" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Keyboard="Text"
+                        <Entry x:Name="EntryPassword" TextColor="Black" 
+                               PlaceholderColor="Gray" Placeholder="{i18n:Translate Password}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Keyboard="Text"
                         IsPassword="True"   Text="{Binding Password}"  >
                             <Entry.HeightRequest>
                                 <OnPlatform x:TypeArguments="x:Double" iOS="40" Android="50"  />
@@ -48,7 +51,8 @@
 
                     </Grid>
 
-                    <Label  Text="ForgotPassword"  HorizontalOptions="CenterAndExpand"  VerticalOptions="Center" 
+                    <Label  Text="{i18n:Translate ForgotPwd}"  HorizontalOptions="CenterAndExpand" 
+                            VerticalOptions="Center" 
                      TextColor="{StaticResource AzulClaro}">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding RecoverPasswordCommand}"  />
@@ -58,7 +62,7 @@
 
                     <Button Margin="80,10,80,0" 
                             Command="{Binding LoginCommand}" 
-                            Text="INICIAR SESION" HorizontalOptions="FillAndExpand"  
+                            Text="{i18n:Translate Login}" HorizontalOptions="FillAndExpand"  
                             VerticalOptions="Center" BackgroundColor="{StaticResource AzulOscuro}" 
                             FontSize="16" BorderWidth="2"
                             BorderRadius="10" BorderColor="{StaticResource AzulOscuro}" TextColor="White">
@@ -73,12 +77,13 @@
                         </Grid.ColumnDefinitions>
 
                     </Grid>
-                    <Label Margin="50,10,50,0" FontSize="15" Text="Dont Have Account" HorizontalOptions="Center" VerticalOptions="Center"  TextColor="{StaticResource FontColor}">
+                    <Label Margin="50,10,50,0" FontSize="15" 
+                           Text="{i18n:Translate HaveAccount}" HorizontalOptions="Center" VerticalOptions="Center"  TextColor="{StaticResource FontColor}">
                     </Label>
                     <Button Margin="80,20,80,0" Command="{Binding RegisterNewUserCommand}" 
                     IsEnabled="{Binding IsEnabled}" 
                     FontAttributes="Bold" 
-                    Text="Register New User" 
+                    Text="{i18n:Translate NewUser}" 
                     HorizontalOptions="FillAndExpand" VerticalOptions="Center" 
                     BackgroundColor="{StaticResource AzulClaro}" TextColor="{StaticResource AzulOscuro}"
                     FontSize="16" BorderColor="{StaticResource AzulClaro}" BorderWidth="2" BorderRadius="10">
@@ -95,11 +100,10 @@
                                 <OnPlatform x:TypeArguments="Color" iOS="#FF7057" Android="#FF7057" />
                             </ActivityIndicator.Color>
                         </ActivityIndicator>
-                        <Label HorizontalTextAlignment="Center" BackgroundColor="Transparent"  Text="Loading..." TextColor="#000000" XAlign="Center" />
                     </StackLayout>
                 </Frame>
             </Grid>
-            <Label Margin="0,20,0,10" FontSize="10" Text="THE MARKETING PLANNER" HorizontalOptions="Center" VerticalOptions="End"  TextColor="Gray">
+            <Label Margin="0,20,0,10" FontSize="10" Text="{i18n:Translate TmpSubtitle}" HorizontalOptions="Center" VerticalOptions="End"  TextColor="Gray">
             </Label>
         </StackLayout>
     </ContentPage.Content>

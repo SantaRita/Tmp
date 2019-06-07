@@ -252,7 +252,7 @@
 
         // get objects by pack
         //*************************************************************
-        public async Task<Response> GetObjectsByPack<T>(string urlBase,
+        public async Task<Response> GetMyPlans<T>(string urlBase,
                 string servicePrefix,
                 string controller
 
@@ -263,9 +263,9 @@
             {
                 var client = new HttpClient();
                 client.BaseAddress = new Uri(urlBase);
-                client.DefaultRequestHeaders.Authorization =
+                /*client.DefaultRequestHeaders.Authorization =
                         new AuthenticationHeaderValue(MainViewModel.GetInstance().Token.TokenType,
-                                                      MainViewModel.GetInstance().Token.AccessToken);
+                                                      MainViewModel.GetInstance().Token.AccessToken);*/
                 var url = string.Format("{0}{1}", servicePrefix, controller);
                 var response = await client.PostAsync(url, null);
                 if (!response.IsSuccessStatusCode)

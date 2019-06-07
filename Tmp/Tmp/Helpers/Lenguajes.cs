@@ -7,29 +7,27 @@ using Xamarin.Forms;
 
 namespace Tmp.Helpers
 {
-    
-        public static class Lenguages
+
+
+    public static class Lenguages
         {
-            static Lenguages()
+
+        private static global::System.Globalization.CultureInfo resourceCulture;
+
+        static Lenguages()
             {
                 var ci = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
                 AppResources.Culture = ci;
                 DependencyService.Get<ILocalize>().SetLocale(ci);
             }
 
-            public static string Literal(string cadena)
-            {
+        public static string Literal(string cadena)         {
+            global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Tmp.Resx.AppResources", typeof(AppResources).Assembly);
+            return temp.GetString(cadena, resourceCulture);
+            //return AppResources.Literal(cadena);
+        }
 
-                Type type = typeof(AppResources);
-                MethodInfo method = type.GetMethod(cadena);
-                AppResources c = new AppResources();
-                string result = (string)method.Invoke(c, null);
-                return result;
-
-                //return AppResources.Literal(cadena);
-            }
-
-            public static string GetIdioma()
+        public static string GetIdioma()
             {
                 var idioma = AppResources.Culture.CompareInfo.Name.ToString().ToUpper().Substring(0, 2);
 

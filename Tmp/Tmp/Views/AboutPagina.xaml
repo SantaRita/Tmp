@@ -3,6 +3,8 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             x:Class="Tmp.Views.AboutPagina"
             NavigationPage.HasBackButton="True"
+            xmlns:i18n="clr-namespace:Tmp.Helpers"
+            Title="{i18n:Translate About}"                          
             BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.ToolbarItems>
         <ToolbarItem  Icon="usericon.png">
@@ -12,11 +14,16 @@
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
 
-                    <Image Source="xamarin_logo" Aspect="AspectFit" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                    <Image Source="tmplogo" Aspect="AspectFit" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                     </Image>
-                    <Label Text="Acerca de"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" FontSize="14" TextColor="Gray" XAlign="Center" />
-                    <Label x:Name="version" Text="" Margin="30"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" FontSize="16" TextColor="Black" />
-                    <Label Text="© 2018 Innermap, Inc."  HorizontalOptions="Center" VerticalOptions="End" FontSize="12" TextColor="Gray" />
+                    <Label x:Name="version" Text="Versión X.X.X" Margin="0,10,0,0"
+                           HorizontalOptions="Center" VerticalOptions="CenterAndExpand" FontSize="18"  TextColor="Gray" XAlign="Center"
+                           HorizontalTextAlignment="Center"/>
+                    <Label x:Name="versiondesc"
+                           Text="{i18n:Translate Rights}" 
+                           Margin="30"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" FontSize="16" TextColor="Black"
+                           HorizontalTextAlignment="Center"/>
+                    
                 </StackLayout>
         </StackLayout>
     </ContentPage.Content>

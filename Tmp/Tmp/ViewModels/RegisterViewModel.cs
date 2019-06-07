@@ -329,7 +329,6 @@ namespace Tmp.ViewModels
 
             navigationService.SetMainPage("MasterDetailPagina");
 
-            
 
         }
 

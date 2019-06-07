@@ -6,7 +6,9 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Tmp.Helpers;
 using Tmp.Models;
+using Tmp.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -24,42 +26,42 @@ namespace Tmp.Views
             var masterPageItems = new List<MasterPageItem>();
             masterPageItems.Add(new MasterPageItem
             {
-                Title = "Nuevo Plan",
+                Title = Lenguages.Literal("NewPlan"),
                 IconSource = "icon.png",
-                Pagina = "NuevoPlanPagina",
+                Pagina = "WelcomePlanPagina",
                 TargetType = typeof(AboutPagina)
             });
-            masterPageItems.Add(new MasterPageItem
+            /*masterPageItems.Add(new MasterPageItem
             {
                 Title = "Mis Planes",
                 IconSource = "icon.png",
                 Pagina = "PlanesPagina",
                 TargetType = typeof(AboutPagina)
-            });
+            });*/
             masterPageItems.Add(new MasterPageItem
             {
-                Title = "Terminos y Condiciones",
+                Title = Lenguages.Literal("Terms"),
                 IconSource = "icon.png",
                 Pagina = "TerminosPagina",
                 TargetType = typeof(AboutPagina)
             });
             masterPageItems.Add(new MasterPageItem
             {
-                Title = "Contacto",
+                Title = Lenguages.Literal("Contact"),
                 IconSource = "icon.png",
                 Pagina = "ContactoPagina",
                 TargetType = typeof(AboutPagina)
             });
             masterPageItems.Add(new MasterPageItem
             {
-                Title = "Acerca de.",
+                Title = Lenguages.Literal("About"),
                 IconSource = "icon.png",
                 Pagina = "AboutPagina",
                 TargetType = typeof(AboutPagina)
             });
             masterPageItems.Add(new MasterPageItem
             {
-                Title = "Cerrar Sesión",
+                Title = Lenguages.Literal("CloseSession"),
                 IconSource = "icon.png",
                 Pagina = "LogoutPagina",
                 TargetType = typeof(AboutPagina)
@@ -67,8 +69,11 @@ namespace Tmp.Views
 
             menuItemsListView.ItemsSource = masterPageItems;
 
+            UserName.Text = MainViewModel.GetInstance().Token.Customer.Name;
+            Mail.Text = MainViewModel.GetInstance().Token.Customer.Email;
 
         }
+
 
 
 

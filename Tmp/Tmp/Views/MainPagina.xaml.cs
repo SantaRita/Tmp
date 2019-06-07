@@ -21,7 +21,8 @@ namespace Tmp.Views
         {
             InitializeComponent();
 
-            Detail = new NavigationPage(new AboutPagina());
+            MainViewModel.GetInstance().Planes = new PlanesViewModel();
+            Detail = new NavigationPage(new PlanesPagina());
 
 
             mainPaginaMaster.menuItemsListView.ItemSelected += OnItemSelected;

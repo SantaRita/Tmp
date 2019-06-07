@@ -2,26 +2,70 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Tmp.Views.ContactoPagina"
+            xmlns:i18n="clr-namespace:Tmp.Helpers"
+             Title="{i18n:Translate Contact}"             
             BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="20,0,20,0">
-            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                <Image Source="xamarin_logo" Aspect="AspectFit" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="20,10,20,0">
+            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
+                <Image Source="tmplogo" Aspect="AspectFit" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Scale="0.8">
                 </Image>                
                 <Label Margin="0,20,0,20" 
                        Text="fñfjsfkñ jfkñf fsdjk jsdfksdñ jfdkaslñ jfkdlñsa jfkdlñsa jfdkslña fjdskalñf jdsklñ . fsdkfjlsdñ jsdkaslñ fdas.f jdkaslñf jdksal f,d.sa fjkdlsa ñfjdkal fsd. fjkdasl "
                        HorizontalTextAlignment="Center"/>
 
+                
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>                    
-                    <Label Grid.Row="0" Grid.Column="1" Text="Linkedin"  HorizontalOptions="Start" VerticalOptions="CenterAndExpand" FontSize="18" TextColor="Gray" XAlign="Start" />
-                    <Label Grid.Row="1" Grid.Column="1" Text="Skype"  HorizontalOptions="Start" VerticalOptions="CenterAndExpand" FontSize="18" TextColor="Gray" XAlign="Start" />
-                    <Label Grid.Row="2" Grid.Column="1" Text="Facebook"  HorizontalOptions="Start" VerticalOptions="CenterAndExpand" FontSize="18" TextColor="Gray" XAlign="Start" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Source="linkedinico" Grid.Row="0" Grid.Column="0" 
+                           Aspect="AspectFit" 
+                           HorizontalOptions="FillAndExpand" 
+                           VerticalOptions="CenterAndExpand">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Linkedin_Tapped" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label Grid.Row="0" Grid.Column="1" Text="LinkedIn"  HorizontalOptions="Start" VerticalOptions="CenterAndExpand" FontSize="18" TextColor="Gray" XAlign="Start" >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Linkedin_Tapped" />
+                        </Label.GestureRecognizers>                        
+                    </Label>
+
+                    <Image Source="skypeico" Grid.Row="1" Grid.Column="0" 
+                           Aspect="AspectFit" 
+                           HorizontalOptions="FillAndExpand" 
+                           VerticalOptions="CenterAndExpand">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Skype_Tapped" />
+                        </Image.GestureRecognizers>                        
+                    </Image>
+                    <Label Grid.Row="1" Grid.Column="1" Text="Skype"  HorizontalOptions="Start" VerticalOptions="CenterAndExpand" FontSize="18" TextColor="Gray" XAlign="Start" >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Skype_Tapped" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                    <Image Source="facebookico" Grid.Row="2" Grid.Column="0" 
+                           Aspect="AspectFit" 
+                           HorizontalOptions="FillAndExpand" 
+                           VerticalOptions="CenterAndExpand">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Facebook_Tapped" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label Grid.Row="2" Grid.Column="1" Text="Facebook"  HorizontalOptions="Start" VerticalOptions="CenterAndExpand" FontSize="18" TextColor="Gray" XAlign="Start" >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Facebook_Tapped" />
+                        </Label.GestureRecognizers>
+                    </Label>
 
                 </Grid>
 
