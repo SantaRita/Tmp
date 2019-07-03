@@ -171,6 +171,9 @@
   <data name="NewUser" xml:space="preserve">
     <value>Register New User</value>
   </data>
+  <data name="Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>
@@ -179,6 +182,9 @@
   </data>
   <data name="PasswordRequired" xml:space="preserve">
     <value>You must enter a password</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Previous</value>
   </data>
   <data name="PwdChanged" xml:space="preserve">
     <value>Password Changed</value>
@@ -206,6 +212,9 @@
   </data>
   <data name="Rights" xml:space="preserve">
     <value>THE MARKETING PLANNER is an original idea and exclusive product of BRANDING SOUND SYSTEM. All rights reserved - 2019</value>
+  </data>
+  <data name="SelectOption" xml:space="preserve">
+    <value>Select option</value>
   </data>
   <data name="SelectPlan" xml:space="preserve">
     <value>Select Plan</value>

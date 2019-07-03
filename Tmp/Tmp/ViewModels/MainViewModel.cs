@@ -18,6 +18,10 @@ namespace Tmp.ViewModels
         public PasswordRecoveryViewModel PasswordRecovery { get; set; }
         public PasswordConfirmViewModel PasswordConfirm { get; set; }
         public TerminosViewModel Terminos { get; set; }
+        public MyPlanViewModel MyPlan { get; set; }
+        public String TypePlan { get; set; }
+        public String IdPlan { get; set; }
+        public String IdMyPlan { get; set; }
         public Boolean BotonTerminos { get; set; }
         public WelcomePlanViewModel WelcomePlan { get; set; }
 

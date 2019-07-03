@@ -29,9 +29,7 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                        <Image Source="tmpman" Margin="0,0,0,0" Grid.Row="0" Grid.Column="1"
-                           VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-                        </Image>
+
 
                         <Button Grid.Row="1" Grid.Column="0"
                             Margin="10,0,10,0"
@@ -39,6 +37,7 @@
                             Text="{i18n:Translate Goods}" HorizontalOptions="FillAndExpand"  
                             VerticalOptions="Center" BackgroundColor="{StaticResource AzulOscuro}" 
                             FontSize="16" BorderWidth="2"
+                            Clicked="BtBien_Clicked"
                             BorderRadius="10" BorderColor="{StaticResource AzulOscuro}" TextColor="White">
                         </Button>
                         <Button Grid.Row="1" Grid.Column="2" 
@@ -47,13 +46,18 @@
                             Text="{i18n:Translate Services}" HorizontalOptions="FillAndExpand"  
                             VerticalOptions="Center" BackgroundColor="{StaticResource AzulOscuro}" 
                             FontSize="16" BorderWidth="2"
+                            Clicked="BtServicio_Clicked"
                             BorderRadius="10" BorderColor="{StaticResource AzulOscuro}" TextColor="White">
                         </Button>
+
+                        <Image Source="tmpman" Margin="0,0,0,0" Grid.Row="0" Grid.Column="1"
+                           VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                        </Image>
                     </Grid>
 
                 </StackLayout>
 
-                <ContentView x:Name="bgLayer" BackgroundColor="Transparent"  IsVisible="{Binding IsRunning}" Opacity="0.2" />
+                <!--<ContentView x:Name="bgLayer" BackgroundColor="Transparent"  IsVisible="{Binding IsRunning}" Opacity="0.2" />
                 <Frame x:Name="frameLayer" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="CenterAndExpand" IsVisible="{Binding IsRunning}" VerticalOptions="CenterAndExpand">
                     <StackLayout>
                         <ActivityIndicator x:Name="indicatorLoader" BackgroundColor="Transparent" Opacity="0.9" IsRunning="{Binding IsRunning}" IsVisible="{Binding IsRunning}" VerticalOptions="CenterAndExpand"  >
@@ -62,7 +66,7 @@
                             </ActivityIndicator.Color>
                         </ActivityIndicator>
                     </StackLayout>
-                </Frame>
+                </Frame>-->
             </Grid>
 
         </StackLayout>

@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using Tmp.Services;
+using Tmp.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,5 +13,21 @@ namespace Tmp.Views
 		{
 			InitializeComponent ();
 		}
-	}
+
+        private async void BtBien_Clicked(object sender, EventArgs e)
+        {
+            NavigationService navigationService = new NavigationService();
+            MainViewModel.GetInstance().TypePlan = "BIENES_01";
+            await navigationService.NavigateDetail("MyPlanPagina");
+
+        }
+
+        private async void BtServicio_Clicked(object sender, EventArgs e)
+        {
+            NavigationService navigationService = new NavigationService();
+            MainViewModel.GetInstance().TypePlan = "SERVICIOS_01";
+            await navigationService.NavigateDetail("MyPlanPagina");
+
+        }
+    }
 }

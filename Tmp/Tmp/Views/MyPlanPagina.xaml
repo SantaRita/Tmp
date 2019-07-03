@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tmp.Views.MyPlanPagina"
+             xmlns:i18n="clr-namespace:Tmp.Helpers"
+             Title=""
+             BackgroundColor="white"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}" >
+    <ContentPage.Content>
+        <!-- Cabecera de página con la barra de navegacion -->
+        <StackLayout BindingContext="{Binding MyPlan}" >
+            
+            <Grid Margin="10,10,10,10" RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Margin="10" Grid.Row="0" Grid.ColumnSpan="3" Grid.Column="0" x:Name="NombrePlan" 
+                       FontSize="24" HorizontalTextAlignment="Center"
+                       FontAttributes="Bold"/>
+
+                <Button Grid.Row="1" Grid.Column="0"
+                            Margin="10,0,10,0"
+                            x:Name="btAnterior" 
+                            IsVisible="False"
+                            Text="{i18n:Translate Previous}" HorizontalOptions="FillAndExpand"  
+                            VerticalOptions="Center" BackgroundColor="{StaticResource AzulOscuro}" 
+                            Clicked="BtAnterior_Clicked"
+                            FontSize="14" BorderWidth="2"
+                            
+                            BorderRadius="10" BorderColor="{StaticResource AzulOscuro}" TextColor="White">
+                </Button>
+                <Button Grid.Row="1" Grid.Column="2" 
+                            IsVisible="False"
+                            Margin="10,0,10,0"
+                            x:Name="btSiguiente" 
+                            Text="{i18n:Translate Next}" HorizontalOptions="FillAndExpand"  
+                            VerticalOptions="Center" BackgroundColor="{StaticResource AzulOscuro}" 
+                            FontSize="16" BorderWidth="2"
+                            Clicked="BtSiguiente_Clicked"
+                            BorderRadius="10" BorderColor="{StaticResource AzulOscuro}" TextColor="White">
+                </Button>
+            </Grid>
+            <StackLayout Margin="20,0,20,50"  HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" >
+                <ScrollView x:Name="scroll">
+                    <StackLayout x:Name="lista" Margin="0,0,0,50"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

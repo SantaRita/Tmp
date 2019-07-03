@@ -92,6 +92,11 @@ namespace Tmp.Services
                     await NP.PushAsync(new WelcomePlanPagina());
                     break;
 
+                case "MyPlanPagina":
+                    MainViewModel.GetInstance().MyPlan = new MyPlanViewModel();
+                    await NP.PushAsync(new MyPlanPagina());
+                    break;
+
                 case "TerminosPagina":
                     MainViewModel.GetInstance().BotonTerminos = false;
                     MainViewModel.GetInstance().Terminos = new TerminosViewModel();

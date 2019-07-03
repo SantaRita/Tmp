@@ -249,8 +249,53 @@
         }
 
 
+        // ******************* GetMyFullPlans
+        public async Task<Response> GetMyFullPlans<T>(string urlBase,
+                        string servicePrefix,
+                        string controller
 
-        // get objects by pack
+                    )
+        {
+
+            try
+            {
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(urlBase);
+                /*client.DefaultRequestHeaders.Authorization =
+                        new AuthenticationHeaderValue(MainViewModel.GetInstance().Token.TokenType,
+                                                      MainViewModel.GetInstance().Token.AccessToken);*/
+                var url = string.Format("{0}{1}", servicePrefix, controller);
+                var response = await client.PostAsync(url, null);
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = response.StatusCode.ToString(),
+                    };
+                }
+
+                var result = await response.Content.ReadAsStringAsync();
+                var model = JsonConvert.DeserializeObject<MyFullPlan>(result);
+
+                return new Response
+                {
+                    IsSuccess = true,
+                    Message = "Ok",
+                    Result = model,
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                };
+            }
+        }
+
+
         //*************************************************************
         public async Task<Response> GetMyPlans<T>(string urlBase,
                 string servicePrefix,
