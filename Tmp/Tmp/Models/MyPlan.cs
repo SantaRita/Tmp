@@ -18,5 +18,9 @@ namespace Tmp.Models
         public string Name { get; set; }
 
         public DateTime CreationDate { get; set; } = DateTime.Now;
+
+        public string KeyPlan { get; set; }
+
+        public string Formulario { get; set; }
     }
 }

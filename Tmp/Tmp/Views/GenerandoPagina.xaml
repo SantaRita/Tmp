@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tmp.Views.GenerandoPagina"
+             xmlns:i18n="clr-namespace:Tmp.Helpers"
+             Title="{i18n:Translate SelectPlan}"
+             BackgroundColor="#5AC8FA"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}" >
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" >
+                <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" Padding="8" Spacing="10" Margin="0,0,0,0">
+
+                    <Label   Grid.ColumnSpan="3" Text="{i18n:Translate Generando}"  
+                            HorizontalOptions="CenterAndExpand" 
+                            HorizontalTextAlignment="Center"
+                            VerticalOptions="Center" FontSize="24" FontAttributes="Bold" 
+                            TextColor="Black">
+                    </Label>
+
+                    <Grid Margin="10,0,10,0" RowSpacing="0" ColumnSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+
+                        <Button Grid.Row="1" Grid.Column="1" 
+                            Margin="10,0,10,0"
+                            x:Name="btGenerando" 
+                            Text="Generando" HorizontalOptions="FillAndExpand"  
+                            VerticalOptions="Center" BackgroundColor="{StaticResource AzulOscuro}" 
+                            FontSize="16" BorderWidth="2"
+                            Clicked="BtGenerando_Clicked"
+                            BorderRadius="10" BorderColor="{StaticResource AzulOscuro}" TextColor="White">
+                        </Button>
+
+                        <Image Source="tmpman" Margin="0,0,0,0" Grid.Row="0" Grid.Column="1"
+                           VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                        </Image>
+                    </Grid>
+
+                </StackLayout>
+
+            </Grid>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

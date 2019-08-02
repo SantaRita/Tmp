@@ -18,6 +18,8 @@ namespace Tmp.Views
         {
             NavigationService navigationService = new NavigationService();
             MainViewModel.GetInstance().TypePlan = "BIENES_01";
+            MainViewModel.GetInstance().KeyPlan = null;
+            MainViewModel.GetInstance().PlanActual = null;
             await navigationService.NavigateDetail("MyPlanPagina");
 
         }
@@ -26,6 +28,8 @@ namespace Tmp.Views
         {
             NavigationService navigationService = new NavigationService();
             MainViewModel.GetInstance().TypePlan = "SERVICIOS_01";
+            MainViewModel.GetInstance().KeyPlan = null;
+            MainViewModel.GetInstance().PlanActual = null;
             await navigationService.NavigateDetail("MyPlanPagina");
 
         }

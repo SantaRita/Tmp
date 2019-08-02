@@ -20,10 +20,18 @@ namespace Tmp.ViewModels
         public TerminosViewModel Terminos { get; set; }
         public MyPlanViewModel MyPlan { get; set; }
         public String TypePlan { get; set; }
-        public String IdPlan { get; set; }
+        public MyPlan PlanActual { get; set; }
+        public String EstadoRecPlan { get; set; }
+        public String KeyPlan { get; set; }
         public String IdMyPlan { get; set; }
         public Boolean BotonTerminos { get; set; }
         public WelcomePlanViewModel WelcomePlan { get; set; }
+        public DiagnosticoViewModel Diagnostico { get; set; }
+        public ValoracionViewModel Valoracion { get; set; }
+        public GenerandoViewModel Generando { get; set; }
+        public CulminadoViewModel Culminado { get; set; }
+        public AccionViewModel Accion { get; set; }
+        public String AccionEnvio { get; set; }
 
 
 

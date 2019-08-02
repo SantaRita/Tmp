@@ -41,6 +41,18 @@ namespace Tmp.ViewModels
         public List<MyPlan> myplans;
         private bool isRunning;
 
+        private bool _ayudaVisible = false;
+        public bool AyudaVisible
+        {
+            get { return _ayudaVisible; }
+            set
+            {
+                _ayudaVisible = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(AyudaVisible)));
+
+            }
+        }
+
         private bool _isRefreshing = false;
         public bool IsRefreshing
         {
@@ -282,6 +294,6 @@ namespace Tmp.ViewModels
 
         #endregion
 
-        }
+    }
 }
 

@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tmp.Views.AccionPagina"
+             xmlns:i18n="clr-namespace:Tmp.Helpers"
+             Title="{i18n:Translate SelectPlan}"
+             BackgroundColor="#5AC8FA"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}" >
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Start" >
+
+                <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Padding="8" Spacing="10" Margin="0,0,0,0">
+
+
+                    <Image Source="tmplogo" Margin="0,0,0,0" Grid.Row="0" Grid.Column="1"
+                           VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                    </Image>
+                    
+                    
+                    <Label   Grid.ColumnSpan="3" x:Name="Titulo1"  
+                            HorizontalOptions="CenterAndExpand" 
+                            HorizontalTextAlignment="Center"
+                            FontSize="24" FontAttributes="Bold" 
+                            TextColor="Black">
+                    </Label>
+                    
+
+                    <Label   Grid.ColumnSpan="3" x:Name="Titulo2"  
+                            HorizontalOptions="CenterAndExpand" 
+                            HorizontalTextAlignment="Center"
+                            FontSize="24" FontAttributes="Bold" 
+                            TextColor="Black">
+                    </Label>
+
+                    <Grid Margin="10,0,10,0" RowSpacing="0" ColumnSpacing="0" VerticalOptions="Start">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="AUTO" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Entry Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                            Margin="10"
+                            x:Name="btCampo" 
+                            HorizontalOptions="FillAndExpand"  
+                            VerticalOptions="Start" BackgroundColor="White"                                
+                            FontSize="16" >
+                        </Entry>
+
+
+                         <Button Grid.Row="0" Grid.Column="2" 
+                            Margin="10"
+                            x:Name="btOk" 
+                            Text="{i18n:Translate Ok}" HorizontalOptions="FillAndExpand"  
+                            VerticalOptions="Start" BackgroundColor="{StaticResource AzulOscuro}" 
+                            FontSize="16" BorderWidth="2"
+                            Clicked="BtOk"
+                            BorderRadius="10" BorderColor="{StaticResource AzulOscuro}" TextColor="White">
+                        </Button>
+
+                        <Button Grid.Row="0" Grid.Column="0" 
+                            Margin="10"
+                            x:Name="btCancelar" 
+                            Text="{i18n:Translate Cancelar}" HorizontalOptions="FillAndExpand"  
+                            VerticalOptions="Start" BackgroundColor="{StaticResource AzulOscuro}" 
+                            FontSize="16" BorderWidth="2"
+                            Clicked="BtCancelar"
+                            BorderRadius="10" BorderColor="{StaticResource AzulOscuro}" TextColor="White">
+                        </Button>
+
+
+                    </Grid>
+
+                </StackLayout>
+
+            </Grid>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

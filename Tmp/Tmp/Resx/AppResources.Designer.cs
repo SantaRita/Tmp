@@ -79,6 +79,15 @@ namespace Tmp.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string Cancelar {
+            get {
+                return ResourceManager.GetString("Cancelar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error retreiving data. Check connection please.
         /// </summary>
         internal static string CheckConnection {
@@ -124,11 +133,47 @@ namespace Tmp.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to We have successfully completed the Executive Report of its Strategic Marketing Plan.
+        /// </summary>
+        internal static string Culminado {
+            get {
+                return ResourceManager.GetString("Culminado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You must enter the current password.
         /// </summary>
         internal static string CurrentPassword {
             get {
                 return ResourceManager.GetString("CurrentPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diagnosis.
+        /// </summary>
+        internal static string Diagnostico {
+            get {
+                return ResourceManager.GetString("Diagnostico", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send Report.
+        /// </summary>
+        internal static string EnviarInforme {
+            get {
+                return ResourceManager.GetString("EnviarInforme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send Plan Report.
+        /// </summary>
+        internal static string EnviarInformePlan {
+            get {
+                return ResourceManager.GetString("EnviarInformePlan", resourceCulture);
             }
         }
         
@@ -142,6 +187,15 @@ namespace Tmp.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to We are generating the report of your Strategic Marketing Plan..
+        /// </summary>
+        internal static string Generando {
+            get {
+                return ResourceManager.GetString("Generando", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Goods.
         /// </summary>
         internal static string Goods {
@@ -151,11 +205,29 @@ namespace Tmp.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save Report.
+        /// </summary>
+        internal static string GuardarInforme {
+            get {
+                return ResourceManager.GetString("GuardarInforme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dont Have Account.
         /// </summary>
         internal static string HaveAccount {
             get {
                 return ResourceManager.GetString("HaveAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We have identified the Key Factors. Now we will make a diagnosis of your brand and competition.
+        /// </summary>
+        internal static string HemosIdentificado {
+            get {
+                return ResourceManager.GetString("HemosIdentificado", resourceCulture);
             }
         }
         
@@ -232,6 +304,15 @@ namespace Tmp.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ok.
+        /// </summary>
+        internal static string Ok {
+            get {
+                return ResourceManager.GetString("Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         internal static string Password {
@@ -255,6 +336,24 @@ namespace Tmp.Resx {
         internal static string PasswordRequired {
             get {
                 return ResourceManager.GetString("PasswordRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter the email address where you want to receive the Plan report.
+        /// </summary>
+        internal static string PorFavorEnviar {
+            get {
+                return ResourceManager.GetString("PorFavorEnviar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter the name of the Marketing Plan you want to save.
+        /// </summary>
+        internal static string PorFavorGuardar {
+            get {
+                return ResourceManager.GetString("PorFavorGuardar", resourceCulture);
             }
         }
         
@@ -340,11 +439,38 @@ namespace Tmp.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Required answer.
+        /// </summary>
+        internal static string RequiredAnswer {
+            get {
+                return ResourceManager.GetString("RequiredAnswer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to THE MARKETING PLANNER is an original idea and exclusive product of BRANDING SOUND SYSTEM. All rights reserved - 2019.
         /// </summary>
         internal static string Rights {
             get {
                 return ResourceManager.GetString("Rights", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save Report.
+        /// </summary>
+        internal static string SaveReport {
+            get {
+                return ResourceManager.GetString("SaveReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Executive Report of its Strategic Marketing Plan has been saved successfully.
+        /// </summary>
+        internal static string SaveReportOk {
+            get {
+                return ResourceManager.GetString("SaveReportOk", resourceCulture);
             }
         }
         
@@ -372,6 +498,24 @@ namespace Tmp.Resx {
         internal static string SelectProduct {
             get {
                 return ResourceManager.GetString("SelectProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send Report.
+        /// </summary>
+        internal static string SendReport {
+            get {
+                return ResourceManager.GetString("SendReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Executive Report of its Strategic Marketing Plan has been sended successfully.
+        /// </summary>
+        internal static string SendReportOk {
+            get {
+                return ResourceManager.GetString("SendReportOk", resourceCulture);
             }
         }
         

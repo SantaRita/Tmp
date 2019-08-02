@@ -3,9 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Tmp.Views.PlanesPagina"
              Title="Mis Planes"
+             xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
 
-        <ContentPage.Content>
+    <ContentPage.Behaviors>
+        <behaviors:EventHandlerBehavior EventName="Appearing">
+            <behaviors:InvokeCommandAction Command="{Binding PageAppearingCommand}" />
+        </behaviors:EventHandlerBehavior>
+    </ContentPage.Behaviors>
+    <ContentPage.Content>
             <!-- Cabecera de página con la barra de navegacion -->
         <Grid BindingContext="{Binding Planes}" 
               x:Name="Pantalla" HorizontalOptions="FillAndExpand" 
@@ -16,8 +22,8 @@
                 <Grid.RowDefinitions>
                     <RowDefinition>
                         <RowDefinition.Height>
-                        <OnPlatform x:TypeArguments="GridLength" Android="92*" iOS="89*"/>
-                    </RowDefinition.Height>
+                            <OnPlatform x:TypeArguments="GridLength" Android="92*" iOS="89*"/>
+                        </RowDefinition.Height>
                     </RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -28,7 +34,9 @@
                     <StackLayout Margin="20,0,20,0" x:Name="lista" VerticalOptions="FillAndExpand">
                         <ListView x:Name="menvideos" 
                                   ItemsSource="{Binding MyPlans,  Mode=TwoWay}" SeparatorVisibility="None" 
-                                  SelectedItem="{Binding ObjectSeleccionado, Mode=TwoWay}" IsPullToRefreshEnabled="True" RefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}" VerticalOptions="FillAndExpand">
+                                  SelectedItem="{Binding ObjectSeleccionado, Mode=TwoWay}" IsPullToRefreshEnabled="True" 
+                                  RefreshCommand="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}" 
+                                  VerticalOptions="FillAndExpand">
                             <!--<ListView.RowHeight>
                                 <OnIdiom x:TypeArguments="x:Int32" Phone="135" Tablet="260" />
                             </ListView.RowHeight>-->
@@ -74,6 +82,6 @@
                         </ListView>
                     </StackLayout>
                 </StackLayout>
-            </Grid>
+        </Grid>
         </ContentPage.Content>
     </ContentPage>

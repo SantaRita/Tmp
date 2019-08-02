@@ -33,6 +33,25 @@ namespace Tmp.Models
 
     public class ResponseClass : INotifyPropertyChanged
     {
+        private string _respuesta;
+        public string Respuesta
+        {
+            get
+            {
+                return _respuesta;
+            }
+            set
+            {
+                if (_respuesta != value)
+                {
+                    _respuesta = value;
+                    PropertyChanged?.Invoke(
+                        this,
+                        new PropertyChangedEventArgs(nameof(Respuesta)));
+                }
+            }
+        }
+
         private string _idanswer;
         public string IdAnswer
         {

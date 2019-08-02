@@ -84,8 +84,10 @@ namespace Tmp.ViewModels
                             {
                                 var stack = App.Current.MainPage.Navigation.NavigationStack;
                                 NavigationService navigationService = new NavigationService();
-                                var mainViewModel = MainViewModel.GetInstance();
-                                await navigationService.Navigate("PlayPagina");
+                                MainViewModel.GetInstance().PlanActual = value;
+                                MainViewModel.GetInstance().TypePlan = value.KeyPlan;
+                                MainViewModel.GetInstance().KeyPlan = value.KeyPlan;
+                                await navigationService.NavigateDetail("MyPlanPagina");
                             });
                         
 
@@ -237,56 +239,18 @@ namespace Tmp.ViewModels
 
 
         
-        /*public ICommand PageAppearingCommand { get { return new RelayCommand(PageAppearing); } }
+        public ICommand PageAppearingCommand { get { return new RelayCommand(PageAppearing); } }
 
         async private void PageAppearing()
         {
-            if (mainViewModel.UpdateData)
-            {
-                mainViewModel.UpdateData = false;
 
-                await LoadStories();
-            }
-            UserSaldo = mainViewModel.Token.Customer.Balance;
-            if (mainViewModel.Token.Customer.Avatar != null)
-            {
-                if (mainViewModel.Token.Customer.Avatar == "0" || mainViewModel.Token.Customer.Avatar == "noAvatar")
-                {
-                    UserAvatar = "noAvatar";
+            IsRefreshing = true;
 
-                }
-                else
-                {
-                    UserAvatar = "https://innermapstorage.blob.core.windows.net/avatars/" +
-                    mainViewModel.Token.Customer.Avatar +
-                        ".svg";
-                }
-            }
+            await LoadPlans();
 
-            // SUBSCRIPCION
+            IsRefreshing = false;
 
-            // SUBSCRIPCION
-            var subscription = await SetObjectAction.GetSubscription();
-            if (subscription.Code.Equals("1"))
-            {
-                await dialogService.ShowMessage("Error", Lenguages.Literal("CheckConnection"));
-                return;
-            }
-            else if (subscription.Code.Equals("2"))
-            {
-                //await dialogService.ShowMessage("Error", "inm-getsubscription");
-                return;
-            }
-            TextTypeMembership = subscription.TypeOfMembership;
-            ColorTypeMembership = subscription.ColorTypeMembership;
-
-            MainViewModel.GetInstance().TextTypeMembership = subscription.TypeOfMembership;
-            MainViewModel.GetInstance().ColorTypeMembership = subscription.ColorTypeMembership;
-            MainViewModel.GetInstance().TypeMembership = subscription.Membership;
-
-            // FIN SUBSCRIPCION
-
-        }*/
+        }
 
    
 

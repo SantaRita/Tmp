@@ -123,6 +123,9 @@
   <data name="AcceptTerms" xml:space="preserve">
     <value>Accept</value>
   </data>
+  <data name="Cancelar" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="CheckConnection" xml:space="preserve">
     <value>Error retreiving data. Check connection please</value>
   </data>
@@ -138,17 +141,38 @@
   <data name="Contact" xml:space="preserve">
     <value>Contacto</value>
   </data>
+  <data name="Culminado" xml:space="preserve">
+    <value>We have successfully completed the Executive Report of its Strategic Marketing Plan</value>
+  </data>
   <data name="CurrentPassword" xml:space="preserve">
     <value>You must enter the current password</value>
+  </data>
+  <data name="Diagnostico" xml:space="preserve">
+    <value>Diagnosis</value>
+  </data>
+  <data name="EnviarInforme" xml:space="preserve">
+    <value>Send Report</value>
+  </data>
+  <data name="EnviarInformePlan" xml:space="preserve">
+    <value>Send Plan Report</value>
   </data>
   <data name="ForgotPwd" xml:space="preserve">
     <value>Forgot Password?</value>
   </data>
+  <data name="Generando" xml:space="preserve">
+    <value>We are generating the report of your Strategic Marketing Plan.</value>
+  </data>
   <data name="Goods" xml:space="preserve">
     <value>Goods</value>
   </data>
+  <data name="GuardarInforme" xml:space="preserve">
+    <value>Save Report</value>
+  </data>
   <data name="HaveAccount" xml:space="preserve">
     <value>Dont Have Account</value>
+  </data>
+  <data name="HemosIdentificado" xml:space="preserve">
+    <value>We have identified the Key Factors. Now we will make a diagnosis of your brand and competition</value>
   </data>
   <data name="LengthPwd" xml:space="preserve">
     <value>The new password must have at least 6 characters length</value>
@@ -174,6 +198,9 @@
   <data name="Next" xml:space="preserve">
     <value>Next</value>
   </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>
@@ -182,6 +209,12 @@
   </data>
   <data name="PasswordRequired" xml:space="preserve">
     <value>You must enter a password</value>
+  </data>
+  <data name="PorFavorEnviar" xml:space="preserve">
+    <value>Please enter the email address where you want to receive the Plan report</value>
+  </data>
+  <data name="PorFavorGuardar" xml:space="preserve">
+    <value>Please enter the name of the Marketing Plan you want to save</value>
   </data>
   <data name="Previous" xml:space="preserve">
     <value>Previous</value>
@@ -210,8 +243,17 @@
   <data name="RegMailValid" xml:space="preserve">
     <value>You must enter a valid email</value>
   </data>
+  <data name="RequiredAnswer" xml:space="preserve">
+    <value>Required answer</value>
+  </data>
   <data name="Rights" xml:space="preserve">
     <value>THE MARKETING PLANNER is an original idea and exclusive product of BRANDING SOUND SYSTEM. All rights reserved - 2019</value>
+  </data>
+  <data name="SaveReport" xml:space="preserve">
+    <value>Save Report</value>
+  </data>
+  <data name="SaveReportOk" xml:space="preserve">
+    <value>The Executive Report of its Strategic Marketing Plan has been saved successfully</value>
   </data>
   <data name="SelectOption" xml:space="preserve">
     <value>Select option</value>
@@ -221,6 +263,12 @@
   </data>
   <data name="SelectProduct" xml:space="preserve">
     <value>Select if your product is a good or a service</value>
+  </data>
+  <data name="SendReport" xml:space="preserve">
+    <value>Send Report</value>
+  </data>
+  <data name="SendReportOk" xml:space="preserve">
+    <value>The Executive Report of its Strategic Marketing Plan has been sended successfully</value>
   </data>
   <data name="ServerErrorLogin" xml:space="preserve">
     <value>Account is not registered</value>

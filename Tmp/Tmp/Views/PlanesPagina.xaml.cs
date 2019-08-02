@@ -15,6 +15,12 @@ namespace Tmp.Views
 		public PlanesPagina ()
 		{
 			InitializeComponent ();
-		}
+
+            this.menvideos.ItemSelected += (sender, e) =>
+            {
+                ((ListView)sender).SelectedItem = null;
+
+            };
+        }
 	}
 }

@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tmp.Views.CulminadoPagina"
+             xmlns:i18n="clr-namespace:Tmp.Helpers"
+             Title="{i18n:Translate SelectPlan}"
+             BackgroundColor="#5AC8FA"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}" >
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Start" >
+                <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand" Padding="8" Spacing="10" Margin="0,0,0,0">
+
+                    <Label   Grid.ColumnSpan="3" Text="{i18n:Translate Culminado}"  
+                            HorizontalOptions="CenterAndExpand" 
+                            HorizontalTextAlignment="Center"
+                            FontSize="24" FontAttributes="Bold" 
+                            TextColor="Black">
+                    </Label>
+
+                    <Grid Margin="10,0,10,0" RowSpacing="0" ColumnSpacing="0" VerticalOptions="Start">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="AUTO" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+
+                        <Button Grid.Row="1" Grid.Column="1" 
+                            Margin="10"
+                            x:Name="btEnviar" 
+                            Text="{i18n:Translate SaveReport}" HorizontalOptions="FillAndExpand"  
+                            VerticalOptions="Start" BackgroundColor="{StaticResource AzulOscuro}" 
+                            FontSize="16" BorderWidth="2"
+                            Clicked="BtGuardar"
+                            BorderRadius="10" BorderColor="{StaticResource AzulOscuro}" TextColor="White">
+                        </Button>
+
+                        <Button Grid.Row="2" Grid.Column="1" 
+                            Margin="10"
+                            x:Name="btGuardar" 
+                            Text="{i18n:Translate SendReport}" HorizontalOptions="FillAndExpand"  
+                            VerticalOptions="Start" BackgroundColor="{StaticResource AzulOscuro}" 
+                            FontSize="16" BorderWidth="2"
+                            Clicked="BtEnviar"
+                            BorderRadius="10" BorderColor="{StaticResource AzulOscuro}" TextColor="White">
+                        </Button>
+
+                        <Image Source="tmplogo" Margin="0,0,0,0" Grid.Row="0" Grid.Column="1"
+                           VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                        </Image>
+                    </Grid>
+
+                </StackLayout>
+
+            </Grid>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -248,6 +248,104 @@
             }
         }
 
+        // ******************* PostMyplan
+        public async Task<Response> PostMyplan<T>(string urlBase,
+                        string servicePrefix,
+                        string controller,
+                        MyPlan plan
+                    )
+        {
+
+            try
+            {
+                var client = new HttpClient();
+                var request = JsonConvert.SerializeObject(plan);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8,
+                    "application/json");
+                client.BaseAddress = new Uri(urlBase);
+
+                var url = string.Format("{0}{1}", servicePrefix, controller);
+                var response = await client.PostAsync(url, content);
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = response.StatusCode.ToString(),
+                    };
+                }
+
+                var result = await response.Content.ReadAsStringAsync();
+                var model = JsonConvert.DeserializeObject<MyFullPlan>(result);
+
+                return new Response
+                {
+                    IsSuccess = true,
+                    Message = "Ok",
+                    Result = model,
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                };
+            }
+        }
+
+        // ******************* UpdateMyPlan
+        public async Task<Response> PutMyplan<T>(string urlBase,
+                        string servicePrefix,
+                        string controller,
+                        MyPlan plan
+                    )
+        {
+
+            try
+            {
+                var client = new HttpClient();
+                var request = JsonConvert.SerializeObject(plan);
+                var content = new StringContent(
+                    request,
+                    Encoding.UTF8,
+                    "application/json");
+                client.BaseAddress = new Uri(urlBase);
+
+                var url = string.Format("{0}{1}", servicePrefix, controller);
+                var response = await client.PutAsync(url, content);
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = response.StatusCode.ToString(),
+                    };
+                }
+
+                var result = await response.Content.ReadAsStringAsync();
+                var model = JsonConvert.DeserializeObject<MyFullPlan>(result);
+
+                return new Response
+                {
+                    IsSuccess = true,
+                    Message = "Ok",
+                    Result = model,
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                };
+            }
+        }
+
 
         // ******************* GetMyFullPlans
         public async Task<Response> GetMyFullPlans<T>(string urlBase,

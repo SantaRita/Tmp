@@ -1,18 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Tmp.Views.MyPlanPagina"
+             x:Class="Tmp.Views.ValoracionPagina"
              xmlns:i18n="clr-namespace:Tmp.Helpers"
              Title=""
              BackgroundColor="white"
              BindingContext="{Binding Main, Source={StaticResource Locator}}" >
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Name="Ayuda" Clicked="Ayuda_Clicked"></ToolbarItem>
-    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <!-- Cabecera de página con la barra de navegacion -->
-        <StackLayout BindingContext="{Binding MyPlan}" >
-            
+        <StackLayout BindingContext="{Binding Valoracion}" >
+
             <Grid Margin="10,10,10,10" RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50" />
@@ -32,7 +29,7 @@
                             Margin="10,0,10,0"
                             x:Name="btAnterior" 
                             IsVisible="False"
-                            Text="{i18n:Translate Previous}" HorizontalOptions="FillAndExpand"  
+                            Text="Ant" HorizontalOptions="FillAndExpand"  
                             VerticalOptions="Center" BackgroundColor="{StaticResource AzulOscuro}" 
                             Clicked="BtAnterior_Clicked"
                             FontSize="14" BorderWidth="2"
@@ -43,36 +40,18 @@
                             IsVisible="False"
                             Margin="10,0,10,0"
                             x:Name="btSiguiente" 
-                            Text="{i18n:Translate Next}" HorizontalOptions="FillAndExpand"  
+                            Text="Sig" HorizontalOptions="FillAndExpand"  
                             VerticalOptions="Center" BackgroundColor="{StaticResource AzulOscuro}" 
                             FontSize="16" BorderWidth="2"
                             Clicked="BtSiguiente_Clicked"
                             BorderRadius="10" BorderColor="{StaticResource AzulOscuro}" TextColor="White">
                 </Button>
             </Grid>
-            <StackLayout Margin="20,0,20,20"  HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" >
+            <StackLayout Margin="20,0,20,50"  HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" >
                 <ScrollView x:Name="scroll">
                     <StackLayout x:Name="lista" Margin="0,0,0,50"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     </StackLayout>
                 </ScrollView>
-
-            </StackLayout>
-            <StackLayout x:Name="stAyuda" HeightRequest="170" BackgroundColor="#E8E8E8" VerticalOptions="End" IsVisible="{Binding AyudaVisible}">
-                <Grid Margin="5,5,5,5" RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="20*" />
-                        <ColumnDefinition Width="80*" />
-                    </Grid.ColumnDefinitions>
-
-                    <Image Source="tmplogo" Grid.Row="0" Grid.Column="0"></Image>
-                    <Label Margin="10,10,10,10" Grid.Row="0" Grid.Column="1" FontSize="16" FontAttributes="Bold" Text="Comencemos por iniciar el proceso de llenado del cuestionaro."
-                           HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
-                           />
-
-                </Grid>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

@@ -92,6 +92,31 @@ namespace Tmp.Services
                     await NP.PushAsync(new WelcomePlanPagina());
                     break;
 
+                case "ValoracionPagina":
+                    MainViewModel.GetInstance().Valoracion = new ValoracionViewModel();
+                    await NP.PushAsync(new ValoracionPagina());
+                    break;
+
+                case "GenerandoPagina":
+                    MainViewModel.GetInstance().Generando = new GenerandoViewModel();
+                    await NP.PushAsync(new GenerandoPagina());
+                    break;
+
+                case "CulminadoPagina":
+                    MainViewModel.GetInstance().Culminado = new CulminadoViewModel();
+                    await NP.PushAsync(new CulminadoPagina());
+                    break;
+
+                case "AccionPagina":
+                    MainViewModel.GetInstance().Accion = new AccionViewModel();
+                    await NP.PushAsync(new AccionPagina());
+                    break;
+
+                case "DiagnosticoPagina":
+                    MainViewModel.GetInstance().Diagnostico = new DiagnosticoViewModel();
+                    await NP.PushAsync(new DiagnosticoPagina());
+                    break;
+
                 case "MyPlanPagina":
                     MainViewModel.GetInstance().MyPlan = new MyPlanViewModel();
                     await NP.PushAsync(new MyPlanPagina());
@@ -111,6 +136,11 @@ namespace Tmp.Services
                 case "PlanesPagina":
                     MainViewModel.GetInstance().Planes = new PlanesViewModel();
                     await NP.PushAsync(new PlanesPagina());
+                    break;
+
+                case "VolverMenu":
+                    //MainViewModel.GetInstance().Planes = new PlanesViewModel();
+                    await NP.PopToRootAsync();
                     break;
 
                 case "LogoutPagina":
